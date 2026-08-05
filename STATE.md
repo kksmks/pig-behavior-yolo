@@ -67,12 +67,11 @@
 
 ## 7. 待办（按优先级）
 
-1. 🔜 **用户通读** paper/JRTIP-paper-v4.docx 定稿（重点 Fig.5/Fig.8 拼图观感与合并表）；投稿排版后**实测页数 ≤12**，超页执行预案（Fig.3→补充 / Table 2→正文）
+1. 🔜 **用户通读** paper/JRTIP-paper-v4.docx 定稿 + 猪行为检测-中文成稿-v4.docx（重点 Fig.5/Fig.8 拼图观感与合并表）→ 中文版送导师评审；导师通讯署名落实
 2. 🔜 **用户吊销旧 Roboflow API key 并换新**（旧 key 曾明文存于 7 个文件，已从仓库抹除但应视为泄露）
-3. GitHub 建仓 push（仓库已 git init + 首提交 8823a33；push 后把 URL 填进 cover letter 与论文 Data Availability 占位）
-4. 中文版同步更新到 v4 口径（猪行为检测-中文成稿-v4.docx）→ 导师评审；导师通讯署名落实
-5. 投稿前核对：作者/单位/邮箱/bio 占位、Cover Letter 日期与 GitHub URL、Supplementary 单独上传
-6. 有余力：Nano 上电补延迟三段分解（preprocess/inference/postprocess，审稿团 🟡 项）
+3. 🔜 投稿排版后**实测英文版页数 ≤12**，超页执行预案（Fig.3→补充 / Table 2→正文）
+4. 投稿前核对：作者/单位/邮箱/bio 占位、Cover Letter 日期、Supplementary 单独上传
+5. 有余力：Nano 上电补延迟三段分解（preprocess/inference/postprocess，审稿团 🟡 项）
 
 ## 8. 协作惯例
 

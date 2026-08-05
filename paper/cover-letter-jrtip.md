@@ -23,7 +23,7 @@ We submit our manuscript entitled **"Real-Time Multi-Behavior Detection of Group
 
 **Supplementary material.** One supplementary file (Supplementary_Material.pdf/docx) accompanies the submission, containing the per-class AP50 breakdown (Table S1) referenced in Section 4.4.
 
-**Declarations.** The source datasets are public (Roboflow Universe, CC BY 4.0). Code, configurations, and evaluation scripts are available at [GitHub URL]. The study used only publicly available, non-invasively acquired data; no animal experiments were performed. The authors declare no conflict of interest. AI-assisted tools were used for language polishing and code assistance; all experiments, measurements, and reported numbers were produced and verified by the authors.
+**Declarations.** The source datasets are public (Roboflow Universe, CC BY 4.0). Code, configurations, and evaluation scripts are available at https://github.com/kksmks/pig-behavior-yolo. The study used only publicly available, non-invasively acquired data; no animal experiments were performed. The authors declare no conflict of interest. AI-assisted tools were used for language polishing and code assistance; all experiments, measurements, and reported numbers were produced and verified by the authors.
 
 We hope the manuscript's combination of measured edge deployment, honest generalization analysis, and class-imbalance methodology makes it a good fit for the Journal of Real-Time Image Processing, and we look forward to the reviewers' comments.
 

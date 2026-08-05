@@ -18,6 +18,17 @@
 - 明日待办：……
 ```
 
+## 2026-08-06（凌晨②：GitHub 上线 + URL 回填）
+
+- 做了：
+  - **GitHub 仓库上线**：用户网页建仓 kksmks/pig-behavior-yolo（Public、无初始化文件）；重写 4 个提交作者为 kksmks <kksmks@users.noreply.github.com>（rebase --root --exec reset-author）；连远程推 main 成功（直连无需代理、凭据管理器无弹窗）
+  - **4 处 URL 占位回填**（https://github.com/kksmks/pig-behavior-yolo）：JRTIP-paper-v4.docx 数据可用性声明、cover-letter-jrtip.{md,docx}、build_paper_docx_zh.py → 重建中文 v4；中文声明措辞"将于投稿前公开"→"已在...公开"
+- 文件变更：paper/JRTIP-paper-v4.docx、cover-letter-jrtip.{md,docx}、build_paper_docx_zh.py、猪行为检测-中文成稿-v4.docx
+- 卡点：无
+- 今日待办（用户侧）：通读中英 v4 → 送导师；吊销旧 Roboflow key；投稿排版后实测英文页数 ≤12
+
+---
+
 ## 2026-08-06（凌晨：中文版过审封账）
 
 - 做了：
