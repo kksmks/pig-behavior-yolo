@@ -1,0 +1,35 @@
+# yolo11-ema-n.yaml —— M1 改进模型：YOLOv11n 主干末端（C2PSA 后）插入 EMA 注意力
+# 动机：standing/sitting、walk/active 等姿态类混淆源于高层语义特征不足，
+#       EMA（Efficient Multi-Scale Attention, ICASSP 2023）跨空间学习多尺度注意力，通道数不变
+# 注意：需先在 Python 侧注册 EMA 类（见 notebooks/colab_m1_ema.ipynb 第 4 格）
+nc: 10
+scales:
+  n: [0.50, 0.25, 1024]
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]]         # 0
+  - [-1, 1, Conv, [128, 3, 2]]        # 1
+  - [-1, 2, C3k2, [256, False, 0.25]] # 2
+  - [-1, 1, Conv, [256, 3, 2]]        # 3
+  - [-1, 2, C3k2, [512, False, 0.25]] # 4
+  - [-1, 1, Conv, [512, 3, 2]]        # 5
+  - [-1, 2, C3k2, [512, True]]        # 6
+  - [-1, 1, Conv, [1024, 3, 2]]       # 7
+  - [-1, 2, C3k2, [1024, True]]       # 8
+  - [-1, 1, SPPF, [1024, 5]]          # 9
+  - [-1, 2, C2PSA, [1024]]            # 10
+  - [-1, 1, EMA, [256]]               # 11 ← 插入（n 缩放后此处实际 256 通道）
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 12
+  - [[-1, 6], 1, Concat, [1]]                   # 13
+  - [-1, 2, C3k2, [512, False]]                 # 14
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 15
+  - [[-1, 4], 1, Concat, [1]]                   # 16
+  - [-1, 2, C3k2, [256, False]]                 # 17 (P3/8)
+  - [-1, 1, Conv, [256, 3, 2]]                  # 18
+  - [[-1, 14], 1, Concat, [1]]                  # 19
+  - [-1, 2, C3k2, [512, False]]                 # 20 (P4/16)
+  - [-1, 1, Conv, [512, 3, 2]]                  # 21
+  - [[-1, 11], 1, Concat, [1]]                  # 22 ← 由 10 改接 11（EMA 输出）
+  - [-1, 2, C3k2, [1024, True]]                 # 23 (P5/32)
+  - [[17, 20, 23], 1, Detect, [nc]]             # 24

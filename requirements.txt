@@ -1,0 +1,21 @@
+# Core training / evaluation
+ultralytics>=8.4.105
+torch>=2.1.0
+numpy
+opencv-python
+PyYAML
+tqdm
+Pillow
+
+# Analysis & figures
+matplotlib
+seaborn
+
+# Manuscript build & docx tooling
+python-docx
+
+# Remote training automation (scripts/cloud.py)
+paramiko
+
+# Optional: only needed for scripts/prepare_data.py download-roboflow
+# roboflow

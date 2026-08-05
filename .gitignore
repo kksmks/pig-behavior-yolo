@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Data & Results (too large for git)
+data/dataset/
+data/comportamentos/
+data/ext-eval/
+data/tmp/
+results/
+runs/
+*.pt
+*.onnx
+*.engine
+*.tar
+*.zip
+
+# Working backups
+paper/*-backup.docx
+
+# API keys & secrets
+*.key
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
