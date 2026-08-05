@@ -9,7 +9,7 @@
 > 3. 时间戳格式：`YYYY-MM-DD HH:MM`（本地时间，以 `date` 命令为准）
 > 4. 更新频率宁可过度不可不足——丢状态的代价远大于多写两行
 >
-> 最后更新：2026-08-05 22:55
+> 最后更新：2026-08-06 00:37
 
 ## 1. 项目一句话
 
@@ -22,7 +22,8 @@
 - ✅ **实验工作全部封账**（2026-08-04）：消融阶梯（基线0.5964/M4 0.6035/M3 0.5691/M5 0.5932/M6阴性对照0.5994）+ 对照组 4 模型（yolo12n 0.6135 精度王）+ M4/M5 三次重复 + 压力测试 + 外部验证（0.036–0.067 泛化鸿沟）+ Nano 部署矩阵（19.7FPS@640 / 33.3FPS@480 / ~5W）
 - ✅ 论文 v3 双版成稿（英 JRTIP-paper-v3.docx / 中 猪行为检测-中文成稿-v3.docx，全量数字审计通过）
 - ✅ **v4 定稿完成**（2026-08-05）：8 图 7 表 + 补充材料 Table S1（Supplementary_Material.docx），全部图表号脚本审计无跳号；Cover Letter 双版本就绪；审稿团报告#6 通过；**残余风险=排版后实测页数 ≤12**（预案：Fig.3→补充 / Table 2→正文）
-- ✅ GitHub 仓库就绪（git 首提交 8823a33，74 文件；7 文件明文 API key 已抹除，**旧 key 待吊销**）
+- ✅ GitHub 仓库上线（https://github.com/kksmks/pig-behavior-yolo，5 提交全署名 kksmks；7 文件明文 API key 已抹除，**旧 key 待吊销**）
+- ✅ **投稿材料包就绪**（2026-08-06）：submission-package/（Fig.1-8 单独上传文件 + 主稿 + 补充材料 + Cover Letter 双版本 + README 清单/检查表）；图源历史编号 fig4-fig10 ≠ 论文图号，投稿以包内 Fig1-8 命名为准
 - ❌ **时序平滑模块否决**（2026-08-05）：w3v2 −2.66 / w5v4 −1.27 / w3v3 零效。稀疏抽帧下 IoU 跟踪失效；只适用于密集连续帧部署场景，论文 Limitations 已写为实测阴性结果
 
 ## 3. 关键数据
@@ -100,6 +101,7 @@
 
 | 时间戳 | 内容 |
 |---|---|
+| 2026-08-06 00:37 | **投稿材料包预组装完成**：新建 submission-package/（figures/manuscript/supplementary/cover-letter + README.md 清单）。8 图按论文图号规范重命名收齐（Fig1 分布+倍率←fig6-class-distribution、Fig2 结构←fig4-architecture、Fig3 曲线←fig5-curves、Fig4 帕累托←fig8-pareto、Fig5 Grad-CAM 拼图←fig5-gradcam-hardcase.jpg、Fig6 混淆矩阵←m4-wsample/confusion_matrix_normalized、Fig7 部署←fig9-deploy-pipeline、Fig8 泛化拼图←fig8-generalization-ext）；主稿 JRTIP-paper-v4.docx + 补充材料 + Cover Letter 双版本各一份。README 含图号↔源文件对照表、投稿前检查清单（通读/吊销 key/实测页数/图题逐字复制/通讯作者核对）、分辨率说明（全部满足 Springer 线图要求，最弱 Fig.4/Fig.7 单栏 ≥330dpi）。纯增量不动正文数字 |
 | 2026-08-05 23:55 | **中文版同步 v4 完成**：build_paper_docx_zh.py 全量重写至 v4 口径 → 猪行为检测-中文成稿-v4.docx（8 图 7 表），新建 build_supplementary_zh.py → 猪行为检测-补充材料-v4.docx（表 S1）；拼图永久资产 results/analysis/fig5-gradcam-hardcase.jpg、fig8-generalization-ext.png 中英共用；同步点与英文逐项对齐（合并表/部署化正文/补充迁移/表 5-6-7 改号/图 5a5b8a8b 引用/Table 2 补引/时序阴性结果句）；结构脚本核查通过（8 图段 7 表、引用全 ≥2）；git faada57 提交。中英双版同口径封账，剩余用户项不变（通读双版/吊销 key/push 回填 URL/排版实测页数） |
 | 2026-08-05 23:45 | **投稿冲刺四件套落地**：①**v4 定稿完成**（scripts/finalize_v4.py 一次性做完 manual-todo 全部手动项：Table 1+2 合并四列、部署表化正文、每类 AP 移 Supplementary_Material.docx[Table S1]、效率→T5/压力→T6/跨数据集→T7、Fig.5 左右拼图、Fig.8 上下拼图限高 7.2in；脚本审计 Fig.1-8/Table 1-7 无跳号无重复；顺手修复编号脚本残留混乱——Table 2×2/4×3/6×2、Fig 4/6/7/8 双黄蛋——与 Table 2 正文零引用；Limitations 时序画饼句改为实测阴性结果句）②**审稿团报告#6 收录**：报告#5 篇幅🔴清零，残余风险=页数贴上限（排版后实测，预案 Fig.3→补充/Table 2→正文）③**Cover Letter 双版本**（cover-letter-jrtip.md/.docx）：real-time 实质论述（延迟-分辨率权衡/INT8 缺失/融合抹平）+主动披露切分与两级泛化+补充材料声明，未点名竞品 ④**GitHub 仓库整理**：git init+首提交（8823a33，74 文件）；7 文件明文 Roboflow key 全抹除（**用户需吊销旧 key 换新**）；.gitignore 补 ext-eval/tmp/备份；requirements.txt 重写 |
 | 2026-08-05 22:55 | **时序平滑模块判决：否决**。补建真 mAP 评估器 scripts/eval_temporal_map.py（复刻官方协议：box_iou+ap_per_class、IoU0.5-0.95、101点插值；原 eval 子命令只有类别分布统计无法判决）。三组参数全灭：w3v2 mAP50 −2.66（0.4078→0.3812，10 类全 ≤0）/ w5v4 −1.27 / w3v3 零翻转零效。根因：val/test 为稀疏抽帧（帧号差 50~580），IoU 跟踪跨大时间间隔失效、投票污染正确单帧标签——该技巧仅适用于密集连续帧部署场景（Nano 实时视频），论文不得主张其精度收益。**另揪出 run_temporal_inference.py 类名映射 bug**（CLS_NAMES 误用 Roboflow 展示序，与 data.yaml 字母类序不符 → 旧 compare.txt 类名整体错标、计数正确），已修复并重生成 compare.txt。注：评估输入为 conf=0.25 截断预测，绝对值低于正式 val 0.5608，相对比较公平；若论文引用绝对值需按官方协议（conf=0.001）重测。EXPERIMENT_LOG 补两行，LOG.md 补 08-05 条目 |

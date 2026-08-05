@@ -18,6 +18,17 @@
 - 明日待办：……
 ```
 
+## 2026-08-06（凌晨③：投稿材料包预组装）
+
+- 做了：
+  - **submission-package/ 组装完成**：figures/（Fig1–Fig8 按论文图号规范命名，从 results/analysis 与 results/m4-wsample 收齐，含两张拼图成品）+ manuscript/JRTIP-paper-v4.docx + supplementary/Supplementary_Material.docx + cover-letter/（docx+md 双版本）+ README.md
+  - README 内容：目录结构、图号↔源文件对照表（源文件历史编号 fig4–fig10 与论文图号不一致的防错提醒）、投稿前检查清单 5 项、分辨率说明（全部 ≥290dpi 等效，满足 Springer 线图要求）
+- 文件变更：新建 submission-package/（14 文件，~6MB）；STATE.md 快照+更新记录
+- 卡点：无
+- 今日待办（用户侧）：不变——通读中英 v4 → 送导师；**吊销旧 Roboflow key**；投稿排版后实测英文页数 ≤12
+
+---
+
 ## 2026-08-06（凌晨②：GitHub 上线 + URL 回填）
 
 - 做了：
