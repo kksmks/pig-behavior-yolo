@@ -18,6 +18,15 @@
 - 明日待办：……
 ```
 
+## 2026-08-06（凌晨④：旧 Roboflow key 吊销销账）
+
+- 做了：用户在 Roboflow Settings→API Keys 删除 Key 1（hMQC…，泄露那把），截图确认列表只剩 Key 2；Key 2（NRyn…）经全仓 grep 确认零出现、从未暴露，保留。STATE.md 快照/待办/更新记录三处销账，submission-package/README.md 检查项打勾
+- 文件变更：STATE.md、submission-package/README.md
+- 卡点：无
+- 用户侧剩余：通读中英 v4 → 送导师；投稿排版后实测英文页数 ≤12
+
+---
+
 ## 2026-08-06（凌晨③：投稿材料包预组装）
 
 - 做了：
