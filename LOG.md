@@ -18,6 +18,23 @@
 - 明日待办：……
 ```
 
+## 2026-08-05（深夜②：中文版同步 v4 口径）
+
+- 做了：
+  - **中文版成稿同步 v4**：scripts/build_paper_docx_zh.py 全量重写至 v4 口径 → paper/猪行为检测-中文成稿-v4.docx（8 图 7 表）；新建 scripts/build_supplementary_zh.py → paper/猪行为检测-补充材料-v4.docx（表 S1 每类 AP）
+  - 拼图永久资产落位：results/analysis/fig5-gradcam-hardcase.jpg（左右）、fig8-generalization-ext.png（上下）——中英两版共用
+  - 同步点与英文版逐项对齐：表 1+2 合并四列（训练图像数本地实测）、部署表化正文（四行全保留）、每类 AP 移补充、效率→表 5/压力→表 6/跨数据集→表 7、图 5a/b 与图 8a/b 引用、Table 2 正文引用补入 3.3 节末、Limitations 时序句改实测阴性结果
+  - 结构核查通过（脚本）：8 图段/7 表、图题注 1-8 顺、表/图引用均 ≥2（题注+正文）、表 S1 引用 1 处
+  - git 两次提交：8823a33（仓库初始化）→ faada57（中文 v4 同步）
+- 文件变更：scripts/build_paper_docx_zh.py（重写）、scripts/build_supplementary_zh.py（新建）、paper/猪行为检测-中文成稿-v4.docx、paper/猪行为检测-补充材料-v4.docx、results/analysis/fig5-gradcam-hardcase.jpg、fig8-generalization-ext.png
+- 卡点：无
+- 明日待办：
+  - 用户通读中英 v4 双版（重点拼图观感）→ 中文版给导师评审
+  - 吊销旧 Roboflow key 换新；GitHub 建仓 push（faada57）后回填 URL 占位
+  - 投稿排版后实测英文版页数 ≤12（预案 Fig.3→补充 / Table 2→正文）
+
+---
+
 ## 2026-08-05（深夜：v4 定稿 + 投稿冲刺四件套）
 
 - 做了（第二波，接"时序平滑判决日"）：
