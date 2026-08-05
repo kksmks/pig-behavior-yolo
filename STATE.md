@@ -21,8 +21,9 @@
 
 - ✅ **实验工作全部封账**（2026-08-04）：消融阶梯（基线0.5964/M4 0.6035/M3 0.5691/M5 0.5932/M6阴性对照0.5994）+ 对照组 4 模型（yolo12n 0.6135 精度王）+ M4/M5 三次重复 + 压力测试 + 外部验证（0.036–0.067 泛化鸿沟）+ Nano 部署矩阵（19.7FPS@640 / 33.3FPS@480 / ~5W）
 - ✅ 论文 v3 双版成稿（英 JRTIP-paper-v3.docx / 中 猪行为检测-中文成稿-v3.docx，全量数字审计通过）
-- 🔄 **v4 压缩排版进行中**（JRTIP 12 页上限：11图10表→≤8图≤6表）：JRTIP-paper-v4.docx/v4-partial.docx 已生成，**剩余手动 Word 操作见 paper/v4-manual-todo.txt**（拼图×2、并表、Table 3-5 连环改号）
-- ❌ **时序平滑模块否决**（2026-08-05）：w3v2 −2.66 / w5v4 −1.27 / w3v3 零效。稀疏抽帧下 IoU 跟踪失效；只适用于密集连续帧部署场景，论文不得主张其精度收益。评估器 scripts/eval_temporal_map.py（官方协议口径）已建并保留
+- ✅ **v4 定稿完成**（2026-08-05）：8 图 7 表 + 补充材料 Table S1（Supplementary_Material.docx），全部图表号脚本审计无跳号；Cover Letter 双版本就绪；审稿团报告#6 通过；**残余风险=排版后实测页数 ≤12**（预案：Fig.3→补充 / Table 2→正文）
+- ✅ GitHub 仓库就绪（git 首提交 8823a33，74 文件；7 文件明文 API key 已抹除，**旧 key 待吊销**）
+- ❌ **时序平滑模块否决**（2026-08-05）：w3v2 −2.66 / w5v4 −1.27 / w3v3 零效。稀疏抽帧下 IoU 跟踪失效；只适用于密集连续帧部署场景，论文 Limitations 已写为实测阴性结果
 
 ## 3. 关键数据
 
@@ -66,12 +67,12 @@
 
 ## 7. 待办（按优先级）
 
-1. 🔜 **用户手动**：按 paper/v4-manual-todo.txt 在 Word 完成 v4 收尾（Fig 拼图×2、Table 1+2 合并、Table 8 删并入正文、Table 3-5 Ctrl+H 改号、通读查跳号）→ 另存 JRTIP-paper-v4.docx 正式版
-2. v4 定稿后过模拟审稿团终审（REVIEW_BOARD 报告#6，重点：篇幅/图表规范/过度声明三维）
-3. 中文版同步更新到 v4 口径（猪行为检测-中文成稿-v4.docx）→ 导师评审
-4. Cover Letter 撰写（JRTIP 要求论述 real-time 问题 + 主动披露切分策略/压力测试）
-5. GitHub 代码仓整理开放（Data Availability；含 eval_temporal_map.py、部署脚本；注意抹掉 notebook 里的 Roboflow API key）
-6. 投稿前核对：作者/单位/邮箱占位、APC 免费确认（JRTIP 订阅制）、导师通讯署名落实
+1. 🔜 **用户通读** paper/JRTIP-paper-v4.docx 定稿（重点 Fig.5/Fig.8 拼图观感与合并表）；投稿排版后**实测页数 ≤12**，超页执行预案（Fig.3→补充 / Table 2→正文）
+2. 🔜 **用户吊销旧 Roboflow API key 并换新**（旧 key 曾明文存于 7 个文件，已从仓库抹除但应视为泄露）
+3. GitHub 建仓 push（仓库已 git init + 首提交 8823a33；push 后把 URL 填进 cover letter 与论文 Data Availability 占位）
+4. 中文版同步更新到 v4 口径（猪行为检测-中文成稿-v4.docx）→ 导师评审；导师通讯署名落实
+5. 投稿前核对：作者/单位/邮箱/bio 占位、Cover Letter 日期与 GitHub URL、Supplementary 单独上传
+6. 有余力：Nano 上电补延迟三段分解（preprocess/inference/postprocess，审稿团 🟡 项）
 
 ## 8. 协作惯例
 
@@ -100,6 +101,7 @@
 
 | 时间戳 | 内容 |
 |---|---|
+| 2026-08-05 23:45 | **投稿冲刺四件套落地**：①**v4 定稿完成**（scripts/finalize_v4.py 一次性做完 manual-todo 全部手动项：Table 1+2 合并四列、部署表化正文、每类 AP 移 Supplementary_Material.docx[Table S1]、效率→T5/压力→T6/跨数据集→T7、Fig.5 左右拼图、Fig.8 上下拼图限高 7.2in；脚本审计 Fig.1-8/Table 1-7 无跳号无重复；顺手修复编号脚本残留混乱——Table 2×2/4×3/6×2、Fig 4/6/7/8 双黄蛋——与 Table 2 正文零引用；Limitations 时序画饼句改为实测阴性结果句）②**审稿团报告#6 收录**：报告#5 篇幅🔴清零，残余风险=页数贴上限（排版后实测，预案 Fig.3→补充/Table 2→正文）③**Cover Letter 双版本**（cover-letter-jrtip.md/.docx）：real-time 实质论述（延迟-分辨率权衡/INT8 缺失/融合抹平）+主动披露切分与两级泛化+补充材料声明，未点名竞品 ④**GitHub 仓库整理**：git init+首提交（8823a33，74 文件）；7 文件明文 Roboflow key 全抹除（**用户需吊销旧 key 换新**）；.gitignore 补 ext-eval/tmp/备份；requirements.txt 重写。剩余用户项：通读 v4、排版实测页数、GitHub 建仓 push、中文版同步 v4 |
 | 2026-08-05 22:55 | **时序平滑模块判决：否决**。补建真 mAP 评估器 scripts/eval_temporal_map.py（复刻官方协议：box_iou+ap_per_class、IoU0.5-0.95、101点插值；原 eval 子命令只有类别分布统计无法判决）。三组参数全灭：w3v2 mAP50 −2.66（0.4078→0.3812，10 类全 ≤0）/ w5v4 −1.27 / w3v3 零翻转零效。根因：val/test 为稀疏抽帧（帧号差 50~580），IoU 跟踪跨大时间间隔失效、投票污染正确单帧标签——该技巧仅适用于密集连续帧部署场景（Nano 实时视频），论文不得主张其精度收益。**另揪出 run_temporal_inference.py 类名映射 bug**（CLS_NAMES 误用 Roboflow 展示序，与 data.yaml 字母类序不符 → 旧 compare.txt 类名整体错标、计数正确），已修复并重生成 compare.txt。注：评估输入为 conf=0.25 截断预测，绝对值低于正式 val 0.5608，相对比较公平；若论文引用绝对值需按官方协议（conf=0.001）重测。EXPERIMENT_LOG 补两行，LOG.md 补 08-05 条目 |
 | 2026-08-04 18:20 | **引用体系+图形化+审稿团扩维三件套落地**：①26 条参考文献全部网络核实入文末（Springer Basic 数字制；**揪出 3 处二手转引错**：Li et al. 2022→2024、Bergamini ICPR→VISAPP 2021、YOLOv8 误配 Zenodo DOI（实属 yolov5 v7.0）已避开；牛棚无出处句→Alameer 2020 替换；正文 [1]–[26] 无缺引）②新增 5 图（类别分布+倍率、每类AP柱状、帕累托散点、部署管线、泛化断崖柱状）+图 8 混淆矩阵，全部按正文顺序重排 Fig.1–11、sans-serif+纹理灰度可辨、Springer 图题式③REVIEW_BOARD 审查维度 v2（4→10 维：新增引用/图表规范/篇幅预算/过度声明/可复现/期刊条款）+报告#5：**揪出 2 个必修**——篇幅超 JRTIP 12 页上限（11图10表→投稿排版须压至 ≤8图≤6表，方案已给）与 INMATEH 表图双呈禁令；调研确认 JRTIP 引用为 [n] 数字制、cover letter 必须论述 real-time 问题；writing-guide 已补 JRTIP/INMATEH/EcoInfo 格式规则 |
 | 2026-08-04 17:05 | **v3 全量数字审计（用户要求）揪出并修复 3 个真错误**：①参数削减 −5.6%→**−4.4%**（实测权重：基线 2,591,790 / M5 2,477,646 = −4.40%，fused 口径 −4.37%；原 5.6% 与文中 2.58M/2.47M 自相矛盾，改 7 处×2 语言）②FPS"领先 yolo12n 33%"→**50%**（117.6 vs 78.4，慢 33% 的是 yolo12n）③3.3 采样公式口径错误：代码统计的是**含类图像数**而非实例数（sitting 104 张训练图、investigating 1,714 张、round(√(1714/104))=4.06→4；原文"144 实例/√(4203/144)=4"口径与算术双错），另修摘要/结论"最稀有行为 active"→"低频行为 active"（最稀有类是 sitting 144 实例）；已复核无误项：表2分布合计13,995✓、表3过采样规模5785/5889✓、三次重复均值±std（样本标准差）✓、全部 metrics.json 数字✓、每类 AP 表✓、部署/泛化数字✓、−0.006 在 1σ 内✓；双版 DOCX 已重建 |

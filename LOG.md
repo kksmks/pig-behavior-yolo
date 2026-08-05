@@ -18,6 +18,22 @@
 - 明日待办：……
 ```
 
+## 2026-08-05（深夜：v4 定稿 + 投稿冲刺四件套）
+
+- 做了（第二波，接"时序平滑判决日"）：
+  - **v4 定稿完成**：scripts/finalize_v4.py 一次性完成 manual-todo 全部手动项——Table 1+2 合并（定义+意义/实例/训练图像四列，训练图像数本地标签实测 sitting104/investigating1714 复核）、部署表删除数据写入第5节、每类 AP 表移 Supplementary_Material.docx（Table S1）、效率→Table 5/压力→Table 6/跨数据集→Table 7、Fig.5 Grad-CAM+难例左右拼图、Fig.8 泛化柱状+异源实况上下拼图（限高7.2in）；脚本审计 Fig.1-8/Table 1-7 题注唯一+引用≥1 无跳号；发现并修复编号脚本残留混乱（Table 2×2/4×3/6×2、Fig 4/6/7/8 双黄蛋）与 Table 2 正文零引用
+  - **时序平滑谎言清除**：Limitations 原句"temporal smoothing would likely improve"与当日实测判决矛盾，已改为实测阴性结果句（稀疏帧 IoU 跟踪失效、密集帧部署场景仍可期）
+  - **审稿团终审报告#6 收录**（REVIEW_BOARD.md）：报告#5 篇幅🔴清零；残余风险=页数贴上限（~6.4k词+8图7表估 11-12.5 页，排版后实测，预案 Fig.3→补充/Table 2→正文）
+  - **Cover Letter 双版本**（paper/cover-letter-jrtip.md + .docx）：JRTIP real-time 实质论述（延迟-分辨率权衡/INT8 缺失/融合抹平三现实）+ 主动披露切分策略与两级泛化 + 补充材料声明；未点名竞品
+  - **GitHub 仓库整理**：git init + 首次提交（8823a33，74 文件）；**7 个文件明文 Roboflow API key 全部抹除**（notebooks×2 + archive×5，JSON 校验通过，建议用户吊销旧 key 换新的）；.gitignore 补 data/ext-eval/、data/tmp/、备份 docx；requirements.txt 重写去重补全（torch/python-docx/matplotlib/paramiko 等）
+- 文件变更：paper/JRTIP-paper-v4.docx（定稿）、paper/Supplementary_Material.docx、paper/cover-letter-jrtip.{md,docx}、scripts/finalize_v4.py、REVIEW_BOARD.md（报告#6）、.gitignore、requirements.txt、7 个 key 文件、.git/
+- 卡点：无
+- 明日待办：
+  - 用户通读 v4 定稿 docx（重点 Fig.5/Fig.8 拼图观感）→ 投稿排版后实测页数（≤12）
+  - 用户吊销旧 Roboflow key 并生成新 key（旧 key 曾明文存于 7 文件）
+  - GitHub 建仓 push（Data Availability 声明里的 [GitHub URL] 占位待填）
+  - 中文版同步 v4 口径 → 导师评审
+
 ---
 
 ## 2026-08-05（时序平滑判决日）
