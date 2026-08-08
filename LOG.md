@@ -18,6 +18,51 @@
 - 明日待办：……
 ```
 
+## 2026-08-08（页数实测销账：v5 = 10/12 页）
+
+- 做了：
+  - **答疑"Word 不行"**：查 JRTIP 官方投稿指南——"Word files are also accepted"，期刊同时提供 LaTeX/Word 双模板；审稿看系统编译 PDF，源文件格式不影响评审
+  - **下载官方 Word 模板**（media.springer.com 直链，EIC Kehtarnavaz 签名）→ Word COM 转 docx，解析几何：Letter / T·B 17.8mm / L·R 16.5mm / 双栏 288twips / TNR 正文 10pt 行距 252 / 标题 24 / 作者 11 / 摘要 9 / 图题表题 8 / 文献 8
+  - **scripts/paginate_jrtip.py 灌 v5 入双栏**：Fig.2/5 通栏 174mm、其余单栏 84mm（Fig.8 遵 08-07 决议单栏勿通栏）、连续分节符、表格栏宽 100%+8pt、run 字号剥离
+  - **Word 排版引擎实测 PAGES=10**（计词 6751），导出 PDF 校验：8 图 7 表 33 文献全齐、Declarations/Online Resource 在位
+  - 过程纠偏：先对 v4 测（10 页），读 STATE 发现 v5 已成现行稿（三种子+33 文献，+628 词），改源复测同为 10 页，删 v4 测量中间件，以 v5 为准
+  - bio（~0.2 页）加入后仍远低于 12 页上限，超页预案废止
+- 文件变更：新建 scripts/paginate_jrtip.py、paper/template/{JRTIP-WordTemplate.doc,.docx,v5-jrtip-format.docx,.pdf}；修改 STATE.md、submission-package/README.md（页数检查项打勾）
+- 卡点：无
+- 用户侧剩余（不变）：通读 v5 四件 → 填作者/单位/邮箱/ORCID + Funding + Author Contributions → 送导师 → 投稿
+
+---
+
+## 2026-08-07（傍晚：baseline 三种子跑完 + v5 基线统计写入）
+
+- 做了：
+  - **接管 AutoDL 跑 baseline 三种子**（14:57 启动，约 3.6h 跑完，scripts/cloud.py exec 通道；SFTP 的 push/pull 已确认坏掉，上传走 base64+exec、下载走 exec cat）：seed0 val 0.5729/test 0.5964、seed1 0.5835/0.6095、seed2 0.5902/0.6120 → **val 0.5822±0.0087 / test 0.6060±0.0084**；seed0 逐格复现旧单次 0.5964
+  - **统计结论**：M4 −0.007 在基线 1σ 内；M5 −0.016 ≈ 2SE（p≈0.09 不显著）→ 论文叙事不变（不优于基线、胜在弱类再分配+召回+效率），但"单次基线 0.5964"的旧锚点全部换成三种子口径
+  - **v5 写入**：scripts/apply_baseline_3seeds.py 锚点替换 6 处全中——摘要 (0.590±0.009 vs 三种子基线 0.606±0.008)、Table 3 脚注 (three-seed baseline 0.6060±0.0084)、4.5 节四句重写（含 seed0 复现句、M5 p≈0.09、M4 1σ 内）
+  - **JRTIP 官方投稿指南合规检查**（springer.com/journal/11554/submission-guidelines 逐条比对）：新增修复 6 处（scripts/apply_v5_jrtip.py 全中）——摘要 mAP50/FPS 首现展开（211 词仍 ≤250）、Fig.5/8 题注尾句号删除（Springer 图题规则）、Declarations→Statements and Declarations、SI 两处提及改 "Online Resource 1"、补充材料头部加期刊名+作者占位行。已合规：关键词 6 个、文献 33 条全被引无遗漏、图表顺序引用、IRB/动物福利声明、Data Availability（含 GitHub 代码）、AI-Assisted 声明（符合 Springer LLM 政策）、Cover Letter real-time 论述。**🔴 用户必办=作者/单位/通讯邮箱/ORCID/Funding/Author Contributions 占位**；🟡 图有效分辨率按组合图 600dpi 复核（README 记最弱 330dpi）、SI 投稿时转 PDF 命名 ESM_1.pdf、投稿界面需单独填 Author Contributions+Competing Interests
+  - 结果落账：results/baseline-r0/r1/r2/metrics.json + baseline-3seeds-summary.json；EXPERIMENT_LOG.md 加三行
+  - **审稿团报告 #7（v5 改动段落专项）**：R1 抓到 4 个 🔴/措辞问题全部当场修复（scripts/apply_v5_review7.py，4 处全中）——①摘要 "statistically indistinguishable"→"comparable"（n=3 t 检验不显著≠等效）②2.1 对 PBR-YOLO 的缺失性声明无法确证（Elsevier 全文不可得）→ 随机切分声明只挂 Rahman（其全文自认 within-facility）+ "to our knowledge" 对冲 ③Discussion "show that...do not transfer"（n=2 因果过强）→"suggest...may not transfer" ④S2 caption 补 "single-run values (seed 0)" 防与 4.5 节三种子均值误读矛盾。4.5 节新统计数字复核无误（SE 0.0069/t 2.25/p≈0.088）。R3 领域核查发现 [33] Luo 与 [27] PBR-YOLO 同课题组且 [33] 确用增强做类平衡——我方声明范围未波及，列入备答信素材
+  - **中文版同步 v5**：新建 build_paper_docx_zh_v5.py / build_supplementary_zh_v5.py（v4 脚本未动）→ 中文成稿-v5.docx + 补充材料-v5.docx，英文 v5 全部改动逐节移植（三种子基线口径/三段文献补强/讨论对比段/关键词 6/文献 33/表 S2/审稿团措辞），结构校验 14 项锚点全过
+  - **submission-package 换 v5 全套**：主稿/SI 换 v5（v4 件移除）；Word COM 转 ESM_1.pdf（pypdf 验证含 S1/S2/0.452）；图分辨率复核后 Fig1/3/4/7 提标重出（build_figures.py dpi→430 + upgrade_fig3_hidpi.py 重绘 Fig3 并去图内标题——原图违反 Springer 规则；M5 改虚线灰度可辨），重出后 771–907dpi；Fig8 定为单栏排版（362dpi 达标，勿通栏）；README 重写为"只差填作者信息"状态
+- 文件变更：新建 scripts/apply_baseline_3seeds.py、apply_v5_review7.py、apply_v5_jrtip.py、build_paper_docx_zh_v5.py、build_supplementary_zh_v5.py、upgrade_fig3_hidpi.py、results/baseline-*/metrics.json、results/baseline-3seeds-summary.json、submission-package/supplementary/ESM_1.pdf；修改 paper/JRTIP-paper-v5.docx（6+4+6 处）、Supplementary_Material_v5.docx（S2 caption+头部行）、results/EXPERIMENT_LOG.md、paper/REVIEW_BOARD.md（报告 #7）、scripts/build_figures.py（dpi 430）、submission-package/README.md（全量重写）；产出 paper/猪行为检测-中文成稿-v5.docx、猪行为检测-补充材料-v5.docx；submission-package 主稿/SI/图 4 张换 v5
+- 卡点：无
+- 明日待办：① **用户去 AutoDL 控制台关机**（约 2 元/h，只能本人操作）② 用户通读 v5 四件 → 填作者/单位/邮箱/ORCID + Funding + Author Contributions → 投稿 ③ 确认功耗测量工具名（plan P4）④ 排版实测页数（投稿排版后）⑤ 投稿前可选：全文扫 [31][32] 核对 "do not discuss" 声明
+
+---
+
+## 2026-08-07（文献补强 v5 + M5 每类 AP 补测）
+
+- 做了：
+  - **JRTIP 投稿差距评估**（应用户要求，基于 scholar 检索）：结论=不需大实验，需补文献时效性+统计完备性；全文见根目录 JRTIP-revision-plan.md
+  - **M5 每类 AP 本地补测**：用 scripts/eval_m5_perclass.py（注册 FasterBlock → model.val 官方通道，CPU）补齐 val active 缺失格 **0.452**，并新测 test 每类 AP（active 0.533 / sitting 0.568 / fight 0.849…）；val 0.5611、test 0.5933 与云端 0.5608/0.5932 逐格核对偏差 ≤0.003，协议验证通过
+  - **v5 双件产出**：scripts/apply_v5_edits.py → paper/JRTIP-paper-v5.docx（2.1/2.2/2.3 末尾各补一段、Discussion 补对比段、4.4 补 Table S2 指引句、关键词 8→6、参考文献 [27]–[33] 共 7 条均已核实：PBR-YOLO/Rahman/IRFS/Crasto/Guo-JRTIP/YOLO-FGD-JRTIP/Luo 剪枝蒸馏）+ paper/Supplementary_Material_v5.docx（S1 补 active 0.452、新增 Table S2 测试集每类 AP）；表顺序 bug 由 scripts/fix_supp_v5_order.py 修复
+  - baseline 三种子训练脚本备好（autodl/baseline_3seeds.py），待 GPU
+- 文件变更：新建 scripts/eval_m5_perclass.py、apply_v5_edits.py、fix_supp_v5_order.py、autodl/baseline_3seeds.py、JRTIP-revision-plan.md；修改 paper/tables/per-class-ap.md；产出 paper/JRTIP-paper-v5.docx、Supplementary_Material_v5.docx（**v4 原件未动**）
+- 卡点：无（v5 待用户通读 + 审稿团过一遍新增段落）
+- 明日待办：① AutoDL 跑 baseline_3seeds.py（约 3×1.5h）→ 更新 4.5 节统计 ② 用户通读 v5 双件 ③ 确认功耗测量工具名（补第 5 节方法学一句话）④ 排版实测页数
+
+---
+
 ## 2026-08-06（凌晨④：旧 Roboflow key 吊销销账）
 
 - 做了：用户在 Roboflow Settings→API Keys 删除 Key 1（hMQC…，泄露那把），截图确认列表只剩 Key 2；Key 2（NRyn…）经全仓 grep 确认零出现、从未暴露，保留。STATE.md 快照/待办/更新记录三处销账，submission-package/README.md 检查项打勾

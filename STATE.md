@@ -9,7 +9,7 @@
 > 3. 时间戳格式：`YYYY-MM-DD HH:MM`（本地时间，以 `date` 命令为准）
 > 4. 更新频率宁可过度不可不足——丢状态的代价远大于多写两行
 >
-> 最后更新：2026-08-06 00:37
+> 最后更新：2026-08-08 22:21
 
 ## 1. 项目一句话
 
@@ -21,10 +21,11 @@
 
 - ✅ **实验工作全部封账**（2026-08-04）：消融阶梯（基线0.5964/M4 0.6035/M3 0.5691/M5 0.5932/M6阴性对照0.5994）+ 对照组 4 模型（yolo12n 0.6135 精度王）+ M4/M5 三次重复 + 压力测试 + 外部验证（0.036–0.067 泛化鸿沟）+ Nano 部署矩阵（19.7FPS@640 / 33.3FPS@480 / ~5W）
 - ✅ 论文 v3 双版成稿（英 JRTIP-paper-v3.docx / 中 猪行为检测-中文成稿-v3.docx，全量数字审计通过）
-- ✅ **v4 定稿完成**（2026-08-05）：8 图 7 表 + 补充材料 Table S1（Supplementary_Material.docx），全部图表号脚本审计无跳号；Cover Letter 双版本就绪；审稿团报告#6 通过；**残余风险=排版后实测页数 ≤12**（预案：Fig.3→补充 / Table 2→正文）
+- ✅ **v4 定稿完成**（2026-08-05）：8 图 7 表 + 补充材料 Table S1（Supplementary_Material.docx），全部图表号脚本审计无跳号；Cover Letter 双版本就绪；审稿团报告#6 通过；~~残余风险=排版后实测页数~~ **页数已实测=10/12 页（2026-08-08，v5 口径）**
 - ✅ GitHub 仓库上线（https://github.com/kksmks/pig-behavior-yolo，5 提交全署名 kksmks；7 文件明文 API key 已抹除，**泄露旧 key 已于 2026-08-06 吊销**）
 - ✅ **投稿材料包就绪**（2026-08-06）：submission-package/（Fig.1-8 单独上传文件 + 主稿 + 补充材料 + Cover Letter 双版本 + README 清单/检查表）；图源历史编号 fig4-fig10 ≠ 论文图号，投稿以包内 Fig1-8 命名为准
 - ❌ **时序平滑模块否决**（2026-08-05）：w3v2 −2.66 / w5v4 −1.27 / w3v3 零效。稀疏抽帧下 IoU 跟踪失效；只适用于密集连续帧部署场景，论文 Limitations 已写为实测阴性结果
+- ✅ **baseline 三种子封账**（2026-08-07，AutoDL 3090）：val 0.5822±0.0087 / **test 0.6060±0.0084**（seed0 逐格复现旧单次 0.5964）；M4 −0.007 在 1σ 内、M5 −0.016 ≈ 2SE（p≈0.09 不显著）→ 叙事不变，已写入 v5 摘要/Table 3 脚注/4.5 节（results/baseline-3seeds-summary.json）
 
 ## 3. 关键数据
 
@@ -68,10 +69,12 @@
 
 ## 7. 待办（按优先级）
 
-1. 🔜 **用户通读** paper/JRTIP-paper-v4.docx 定稿 + 猪行为检测-中文成稿-v4.docx（重点 Fig.5/Fig.8 拼图观感与合并表）→ 中文版送导师评审；导师通讯署名落实
-2. 🔜 投稿排版后**实测英文版页数 ≤12**，超页执行预案（Fig.3→补充 / Table 2→正文）
-3. 投稿前核对：作者/单位/邮箱/bio 占位、Cover Letter 日期、Supplementary 单独上传
-4. 有余力：Nano 上电补延迟三段分解（preprocess/inference/postprocess，审稿团 🟡 项）
+1. 🔜 **用户通读** v5 四件（英 JRTIP-paper-v5.docx + Supplementary_Material_v5.docx；中 猪行为检测-中文成稿-v5.docx + 猪行为检测-补充材料-v5.docx，中英已同口径）→ 送导师；导师通讯署名落实；v4 原件均未动
+2. ✅ ~~新增段落过审稿团~~（报告 #7 已审，R1 四问当场修复；🟡 备答信素材两条：n=3 检验功效、与 [33] 同课题组平衡增强路线的比较口径）→ 通读后 submission-package 换 v5 双件
+3. ✅ ~~投稿排版后实测英文版页数 ≤12~~（2026-08-08 已测：**10 页**，官方 Word 模板双栏几何 + Word 排版引擎实测，含 33 条文献；余量 2 页，bio 约 0.2 页无忧；超页预案废止。产物 paper/template/v5-jrtip-format.docx/.pdf，脚本 scripts/paginate_jrtip.py）
+4. 投稿前核对：作者/单位/邮箱/bio 占位、Funding/Contributions、GitHub URL、Cover Letter 日期、Supplementary 单独上传
+5. 确认功耗/FPS 测量工具名，补第 5 节方法学一句话（plan P4）
+6. 有余力：Nano 上电补延迟三段分解（preprocess/inference/postprocess，审稿团 🟡 项）
 
 ## 8. 协作惯例
 
@@ -100,6 +103,13 @@
 
 | 时间戳 | 内容 |
 |---|---|
+| 2026-08-08 22:21 | **页数实测销账：v5 = 10 页（上限 12，余量 2 页）**。应用户"专业软件"疑问核实 JRTIP 官方指南：Word 明确可投（"Word files are also accepted"），下载官方 Word 模板（media.springer.com，EIC Kehtarnavaz 签名 .doc，34KB）→ Word COM 转 docx 解析几何真源（Letter / T·B 17.8mm / L·R 16.5mm / 双栏间距 288twips / TNR 正文 10pt 行距 252 / 标题 24pt / 作者 11pt / 摘要 9pt / 图题表题 8pt / 文献 8pt）。新建 scripts/paginate_jrtip.py 灌 v5 入双栏格式：图片按栏重排（Fig.2/5 通栏 174mm、其余单栏 84mm——Fig.8 遵 08-07 决议单栏勿通栏，连续分节符实现）、表格栏宽 100%+autofit+8pt、run 级字号剥离交样式。Word 排版引擎实测 **PAGES=10（Word 计词 6751）**，导出 PDF pypdf 校验：8 图题 7 表题齐、Statements and Declarations/Online Resource 1 在位、33 条文献完整 [1]–[33]。bio（约 0.2 页）加入后仍远低于上限，超页预案（Fig.3→补充/Table 2→正文）废止。产物 paper/template/{JRTIP-WordTemplate.doc,.docx,v5-jrtip-format.docx,.pdf}；v4 测量中间件已删。注：本次先对 v4 测得 10 页后发现 v5 已成现行稿（08-07 三种子+33 文献），v5 复测同为 10 页，以 v5 为准 |
+| 2026-08-07 19:45 | **submission-package 整体换 v5，投稿进入"只差填作者信息"状态**：①manuscript/换 JRTIP-paper-v5.docx、supplementary/换 Supplementary_Material_v5.docx（v4 件移除）②Word COM（powershell 全路径调用，git-bash 无 powershell 别名）转 ESM_1.pdf——pypdf 验证 2 页含 S1/S2/期刊名/0.452/0.5933 ③图分辨率复核（Springer 半色调300/组合600/线图1200，84mm单栏/174mm通栏）：Fig2/5/6 原达标，**Fig1/3/4/7 提标重出**（build_figures.py dpi 200→430 + 新建 upgrade_fig3_hidpi.py 从 results.csv 重绘 Fig3——顺带修复 Springer 违规：原 Fig3 图内含标题，已去；M5 改虚线灰度可辨；曲线走势与原图一致 M4 领基线领 M5），重出后 771–907dpi 全达标；**Fig8（1198×1417 竖版拼图）通栏仅 175dpi，定为单栏排版设计（362dpi ✅），README 注明勿通栏** ④README 全量重写：v5 结构、逐图分辨率表、检查清单更新为只剩用户项（作者信息/Funding/Author Contributions/Cover Letter 日期/实测页数/导师通讯署名）。注意：主稿 docx 内嵌图仍为低分辨率版（评审够用，生产用单独上传件；英文版勿用 build_paper_docx.py 重建——它是 v4 口径） |
+| 2026-08-07 19:20 | **中文版同步 v5 完成**：新建 scripts/build_paper_docx_zh_v5.py / build_supplementary_zh_v5.py（v4 脚本原件未动）→ paper/猪行为检测-中文成稿-v5.docx + 猪行为检测-补充材料-v5.docx。同步内容：摘要/表3脚注/4.5 节三种子基线口径（val 0.5822±0.0087 / test 0.6060±0.0084、p≈0.09）、2.1（PBR-YOLO+Rahman，审稿团修复后口径）/2.2（IRFS+Crasto）/2.3（本刊先例+Luo 剪枝蒸馏）末段、7 讨论对比段、关键词 8→6、参考文献 +[27]–[33]（assert 33）、4.4 表 S2 指引、在线资源 1 表述；补充材料 S1 补 M5 active=0.452 + 新增表 S2（测试集分类别 AP50，含单次实验口径声明）。结构脚本校验 14 项锚点全过（8 图 7 表 33 文献）。中英双版 v5 同口径封账，待用户通读 |
+| 2026-08-07 19:00 | **JRTIP 官方指南合规检查 + 6 处修复**（scripts/apply_v5_jrtip.py）：摘要缩写 mAP50/FPS 首现展开（211 词 ≤250）、Fig.5/8 题注尾句号删除、Declarations→Statements and Declarations、SI 提及改 "Online Resource 1"、补充材料头部加期刊名+作者占位。已合规项：关键词 6、文献 33 条全被引、图表顺序引用、IRB/知情同意/Data Availability（含 GitHub）/AI-Assisted 声明、Cover Letter real-time 论述。🔴 用户必办：作者/单位/通讯邮箱/ORCID/Funding/Author Contributions 占位填写；🟡 新挂账：图有效分辨率按组合图 600dpi 复核（README 记最弱 330dpi）、SI 投稿时转 PDF 命名 ESM_1.pdf、投稿界面单独填 Author Contributions+Competing Interests |
+| 2026-08-07 18:45 | **审稿团报告 #7（v5 改动段落专项）**：R1 抓到 4 处全部当场修复（scripts/apply_v5_review7.py）——①摘要 statistically indistinguishable→comparable（n=3 t 检验不显著≠等效，D8）②2.1 对 PBR-YOLO 的缺失性声明无法确证（Elsevier 全文不可得）：核实后改写——Rahman [28] 全文确认图像级随机切分（自认 within-facility）✅，PBR-YOLO 仅摘要级证据 → 随机切分声明只挂 Rahman + "to our knowledge" 对冲 ③Discussion n=2 因果 "show that...do not transfer"→"suggest...may not transfer" ④S2 caption 补 "single-run values (seed 0)" 防与 4.5 节 0.6060 均值误读。4.5 节统计数字复核精确（SE 0.0069/t≈2.25/p≈0.088）。R3 领域核查：[33] Luo 与 [27] PBR-YOLO 同课题组、其全文确认用增强做类平衡——我方声明范围未波及，与 [33] 的路线比较列入备答信素材。🟡 备答信素材 2 条（n=3 功效、[33] 比较）；待办②审稿团项销账，剩余=用户通读 |
+| 2026-08-07 18:35 | **baseline 三种子跑完并写入 v5**：AutoDL 3090 约 3.6h 跑完 seed0/1/2（val 0.5729/0.5835/0.5902，test 0.5964/0.6095/0.6120）→ **val 0.5822±0.0087 / test 0.6060±0.0084**；seed0 逐格复现旧单次 0.5964（旧跑默认 seed=0）。统计判决：M4 −0.007 在基线 1σ 内、M5 −0.016 ≈ 2SE（p≈0.09 不显著）→ "不优于基线、胜在弱类再分配+召回+效率"叙事不变。scripts/apply_baseline_3seeds.py 锚点替换 6 处全中：摘要（vs 三种子基线 0.606±0.008）、Table 3 脚注（0.6060±0.0084）、4.5 节四句重写。结果落账 results/baseline-r0/r1/r2/metrics.json + baseline-3seeds-summary.json，EXPERIMENT_LOG 加三行。待办①销账；**AutoDL 实例待用户关机**（约 2 元/h）。技术注记：cloud.py 的 SFTP push/pull 坏（子系统文件系统隔离），上传走 base64+exec、下载走 exec cat |
+| 2026-08-07 13:55 | **文献补强 v5 双件 + M5 每类 AP 补测**（外部评估推动，详见根目录 JRTIP-revision-plan.md v2）：①scripts/eval_m5_perclass.py 本地 CPU 官方 val 通道补齐 M5 val active=0.452（原日志截断缺失格）+ 新测 test 每类 AP，val 0.5611/test 0.5933 与云端逐格核对偏差 ≤0.003；教训：predict+复刻 AP 因 NMS IoU 0.7 vs 官方 0.6 偏低 ~3 点勿用②scripts/apply_v5_edits.py → JRTIP-paper-v5.docx（2.1/2.2/2.3/Discussion 各补一段、4.4 补 Table S2 指引、关键词 8→6、参考文献 +[27]–[33]：PBR-YOLO/Rahman/IRFS/Crasto/Guo/YOLO-FGD/Luo 剪枝蒸馏，均网络核实）+ Supplementary_Material_v5.docx（S1 补格 + 新增 S2 测试集每类 AP，fix_supp_v5_order.py 修表序）③autodl/baseline_3seeds.py 备好（干跑通过）：baseline 三种子是剩余唯一实质实验，跑完更新 4.5 节统计。v4 原件未动，v5 待用户通读+审稿团复审 |
 | 2026-08-06 00:45 | **泄露旧 Roboflow key 已吊销**：用户在 Roboflow Settings→API Keys 删除 Key 1（hMQC…，截图确认已消失）；Key 2（NRyn…）经全仓 grep 确认零出现、从未暴露，保留。待办②销账，剩余用户项=通读双版送导师/排版实测页数 |
 | 2026-08-06 00:37 | **投稿材料包预组装完成**：新建 submission-package/（figures/manuscript/supplementary/cover-letter + README.md 清单）。8 图按论文图号规范重命名收齐（Fig1 分布+倍率←fig6-class-distribution、Fig2 结构←fig4-architecture、Fig3 曲线←fig5-curves、Fig4 帕累托←fig8-pareto、Fig5 Grad-CAM 拼图←fig5-gradcam-hardcase.jpg、Fig6 混淆矩阵←m4-wsample/confusion_matrix_normalized、Fig7 部署←fig9-deploy-pipeline、Fig8 泛化拼图←fig8-generalization-ext）；主稿 JRTIP-paper-v4.docx + 补充材料 + Cover Letter 双版本各一份。README 含图号↔源文件对照表、投稿前检查清单（通读/吊销 key/实测页数/图题逐字复制/通讯作者核对）、分辨率说明（全部满足 Springer 线图要求，最弱 Fig.4/Fig.7 单栏 ≥330dpi）。纯增量不动正文数字 |
 | 2026-08-05 23:55 | **中文版同步 v4 完成**：build_paper_docx_zh.py 全量重写至 v4 口径 → 猪行为检测-中文成稿-v4.docx（8 图 7 表），新建 build_supplementary_zh.py → 猪行为检测-补充材料-v4.docx（表 S1）；拼图永久资产 results/analysis/fig5-gradcam-hardcase.jpg、fig8-generalization-ext.png 中英共用；同步点与英文逐项对齐（合并表/部署化正文/补充迁移/表 5-6-7 改号/图 5a5b8a8b 引用/Table 2 补引/时序阴性结果句）；结构脚本核查通过（8 图段 7 表、引用全 ≥2）；git faada57 提交。中英双版同口径封账，剩余用户项不变（通读双版/吊销 key/push 回填 URL/排版实测页数） |
