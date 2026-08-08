@@ -18,6 +18,20 @@
 - 明日待办：……
 ```
 
+## 2026-08-08（深夜②：JRTIP 格式合规体检 + 3 处修复）
+
+- 做了：
+  - **scripts/audit_jrtip_format.py 26 项机查**（对照官方指南）：终审 **20 PASS / 0 FAIL / 1 WARN / 4 MANUAL**
+  - **3 处修复**（apply_v5_compliance_fix.py，3/3 命中）：①声明节标签改 JRTIP 规定的 Competing Interests ②[2] Peden 补 DOI（SRUC 核实）③**[18] Gu 文章号勘误 109524→109512 + 补 DOI**（ScienceDirect 核实——审计抓出的真笔误，中英同改，zh 由 build_paper_docx_zh_v5.py 改后重建）
+  - 审计脚本自身修 2 bug：多引用组 [1, 2] 解析（曾误报 [2][12][18] 未被引）、Competing Interests 兼容 Conflicts of Interest 表述
+  - WARN=11 条无 DOI 全合规（arXiv/数据集/软件/INMATEH/CVPR 无 DOI 可给）；MANUAL=作者行/Funding/Author Contributions 占位 + bio（用户项）
+  - 投稿包主稿刷新；v5-jrtip-format 重建仍 **10 页**
+- 文件变更：新建 scripts/audit_jrtip_format.py、apply_v5_compliance_fix.py；修改 paper/JRTIP-paper-v5.docx、build_paper_docx_zh_v5.py、猪行为检测-中文成稿-v5.docx、submission-package/manuscript/JRTIP-paper-v5.docx、paper/template/v5-jrtip-format.{docx,pdf}、STATE.md
+- 卡点：无
+- 用户侧剩余（不变）：通读 v5 四件 → 填作者/单位/邮箱/ORCID + Funding + Author Contributions → 送导师 → 投稿
+
+---
+
 ## 2026-08-08（深夜：旧副本清理 + v5 落账补提交）
 
 - 做了：

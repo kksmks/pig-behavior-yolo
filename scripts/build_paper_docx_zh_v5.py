@@ -418,7 +418,8 @@ REFS = [
  'behaviour in group-housed livestock, with application to pig breeding. Front. Genet. 11, 611073 '
  '(2020). https://doi.org/10.3389/fgene.2020.611073',
  'Peden, R.S.E., Turner, S.P., Boyle, L.A., et al.: The translation of animal welfare research into '
- 'practice: the case of mixing aggression between pigs. Appl. Anim. Behav. Sci. 204, 1–9 (2018)',
+ 'practice: the case of mixing aggression between pigs. Appl. Anim. Behav. Sci. 204, 1–9 (2018). '
+ 'https://doi.org/10.1016/j.applanim.2018.03.003',
  'Berckmans, D.: General introduction to precision livestock farming. Anim. Front. 7(1), 6–11 (2017). '
  'https://doi.org/10.2527/af.2017.0102',
  'Redmon, J., Divvala, S., Girshick, R., et al.: You only look once: unified, real-time object '
@@ -459,7 +460,8 @@ REFS = [
  'Kim, J., Suh, Y., Lee, J., et al.: EmbeddedPigCount: pig counting with video object detection and '
  'tracking on an embedded board. Sensors 22(7), 2689 (2022). https://doi.org/10.3390/s22072689',
  'Gu, Z., He, D., Huang, J., et al.: Simultaneous detection of fruits and fruiting stems in mango '
- 'using improved YOLOv8 model deployed by edge device. Comput. Electron. Agric. 227, 109524 (2024)',
+ 'using improved YOLOv8 model deployed by edge device. Comput. Electron. Agric. 227, 109512 (2024). '
+ 'https://doi.org/10.1016/j.compag.2024.109512',
  'Pig Behavior Dataset. Roboflow Universe, version 1 (CC BY 4.0). '
  'https://universe.roboflow.com/km-sd0ce/pig-behavior-wlvku (accessed July 2026)',
  'Bergamini, L., Pini, S., Simoni, A., et al.: Extracting accurate long-term behavior changes from a '

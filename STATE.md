@@ -9,7 +9,7 @@
 > 3. 时间戳格式：`YYYY-MM-DD HH:MM`（本地时间，以 `date` 命令为准）
 > 4. 更新频率宁可过度不可不足——丢状态的代价远大于多写两行
 >
-> 最后更新：2026-08-08 22:21
+> 最后更新：2026-08-08 22:44
 
 ## 1. 项目一句话
 
@@ -103,6 +103,7 @@
 
 | 时间戳 | 内容 |
 |---|---|
+| 2026-08-08 22:44 | **JRTIP 格式合规体检（scripts/audit_jrtip_format.py，26 项机查）+ 3 处修复**：终审 20 PASS / 0 FAIL / 1 WARN / 4 MANUAL（真用户项：作者行/Funding/Author Contributions 占位 + bio）。修复（apply_v5_compliance_fix.py 全中 3/3）：①声明节标签 Conflicts of Interest→**Competing Interests**（指南规定标签名）②[2] Peden 2018 补 DOI 10.1016/j.applanim.2018.03.003（SRUC 机构库核实）③**[18] Gu 2024 文章号勘误 109524→109512**（ScienceDirect 核实，确系笔误）并补 DOI 10.1016/j.compag.2024.109512——中英同步（build_paper_docx_zh_v5.py 改 2 条重建）。WARN=11 条无 DOI 均合规（arXiv/数据集/软件/INMATEH/CVPR）。已 PASS 项：摘要 211 词/关键词 6/标题十进制≤3 级/图表顺序引用/图题注尾无句号/33 条文献全被引（修审计脚本多引用组解析 bug，[1,2]型曾漏报）/AI-Assisted 声明/动物福利/无尾注/Online Resource 1×2/GitHub 链接/SI 头部/Cover Letter real-time×9。投稿包主稿已刷新；排版 PDF 重建仍 10 页 |
 | 2026-08-08 22:35 | **旧副本清理 + v5 落账补提交**：应用户要求删除 v4 及更早旧副本 10 件（git rm 9 件可追溯：英 v2/v3/v4/v4-partial/Supplementary_Material(v4)/中 v2/v3/v4/补充-v4；rm 1 件 v4-backup 系 gitignore 排除件）——paper/ 现存 docx 仅 5 件：投稿=JRTIP-paper-v5.docx + Supplementary_Material_v5.docx（投稿时转 ESM_1.pdf）+ cover-letter-jrtip.docx；导师=猪行为检测-中文成稿-v5.docx + 猪行为检测-补充材料-v5.docx。发现 08-07 v5 全套工作（中英 v5/补充 v5/报告#7/提标图/投稿包换 v5/ESM_1.pdf/9 个脚本）一直未提交，本次一并 add 落账（旧副本在 git 历史中仍可追溯） |
 | 2026-08-08 22:21 | **页数实测销账：v5 = 10 页（上限 12，余量 2 页）**。应用户"专业软件"疑问核实 JRTIP 官方指南：Word 明确可投（"Word files are also accepted"），下载官方 Word 模板（media.springer.com，EIC Kehtarnavaz 签名 .doc，34KB）→ Word COM 转 docx 解析几何真源（Letter / T·B 17.8mm / L·R 16.5mm / 双栏间距 288twips / TNR 正文 10pt 行距 252 / 标题 24pt / 作者 11pt / 摘要 9pt / 图题表题 8pt / 文献 8pt）。新建 scripts/paginate_jrtip.py 灌 v5 入双栏格式：图片按栏重排（Fig.2/5 通栏 174mm、其余单栏 84mm——Fig.8 遵 08-07 决议单栏勿通栏，连续分节符实现）、表格栏宽 100%+autofit+8pt、run 级字号剥离交样式。Word 排版引擎实测 **PAGES=10（Word 计词 6751）**，导出 PDF pypdf 校验：8 图题 7 表题齐、Statements and Declarations/Online Resource 1 在位、33 条文献完整 [1]–[33]。bio（约 0.2 页）加入后仍远低于上限，超页预案（Fig.3→补充/Table 2→正文）废止。产物 paper/template/{JRTIP-WordTemplate.doc,.docx,v5-jrtip-format.docx,.pdf}；v4 测量中间件已删。注：本次先对 v4 测得 10 页后发现 v5 已成现行稿（08-07 三种子+33 文献），v5 复测同为 10 页，以 v5 为准 |
 | 2026-08-07 19:45 | **submission-package 整体换 v5，投稿进入"只差填作者信息"状态**：①manuscript/换 JRTIP-paper-v5.docx、supplementary/换 Supplementary_Material_v5.docx（v4 件移除）②Word COM（powershell 全路径调用，git-bash 无 powershell 别名）转 ESM_1.pdf——pypdf 验证 2 页含 S1/S2/期刊名/0.452/0.5933 ③图分辨率复核（Springer 半色调300/组合600/线图1200，84mm单栏/174mm通栏）：Fig2/5/6 原达标，**Fig1/3/4/7 提标重出**（build_figures.py dpi 200→430 + 新建 upgrade_fig3_hidpi.py 从 results.csv 重绘 Fig3——顺带修复 Springer 违规：原 Fig3 图内含标题，已去；M5 改虚线灰度可辨；曲线走势与原图一致 M4 领基线领 M5），重出后 771–907dpi 全达标；**Fig8（1198×1417 竖版拼图）通栏仅 175dpi，定为单栏排版设计（362dpi ✅），README 注明勿通栏** ④README 全量重写：v5 结构、逐图分辨率表、检查清单更新为只剩用户项（作者信息/Funding/Author Contributions/Cover Letter 日期/实测页数/导师通讯署名）。注意：主稿 docx 内嵌图仍为低分辨率版（评审够用，生产用单独上传件；英文版勿用 build_paper_docx.py 重建——它是 v4 口径） |
