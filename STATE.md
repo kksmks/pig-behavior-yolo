@@ -9,7 +9,7 @@
 > 3. 时间戳格式：`YYYY-MM-DD HH:MM`（本地时间，以 `date` 命令为准）
 > 4. 更新频率宁可过度不可不足——丢状态的代价远大于多写两行
 >
-> 最后更新：2026-08-08 22:59
+> 最后更新：2026-08-08 23:15
 
 ## 1. 项目一句话
 
@@ -103,6 +103,7 @@
 
 | 时间戳 | 内容 |
 |---|---|
+| 2026-08-08 23:15 | **中文版同步润色完成（6/10 处移植，4 处中文本就自然不动）**：build_paper_docx_zh_v5.py 改 6 处后重建——摘要（"三项工作让这套框架真正可用"→"三项设计选择支撑起最终结果"、"且出人意料地是全部参评模型中最快的"、尾句"如实划定"→"为整套研究收束闭环：划清何处有效何处失效"）、引言¶2（"这就是为什么"→"工程趋势因此只有一个方向"）、4.2（"回溯性地印证"→"支持"，同步英文弱化）、4.3（"两个现象值得记录"→"尤为突出"）、**4.5（"经不起审稿人推敲"→"会夸大证据"——中文版的同款元话语，必须同步）**、8 结论（"诚实地划定"→"不加粉饰地划出"）。未移植 4 处及理由：2.1 尾句（中文无双逗号插入问题）、2.3（"很少被讨论"中文自然）、4.6（"这在意料之中而非自相矛盾"本就流畅）、5 部署（中文已是主动语态"有三点实践发现值得报告"）。重建后脚本内置 14 锚点断言通过 + 新文 6 探针全中 + 旧文 6 残留零。中英 v5 人味化同口径封账，剩余=用户通读+填作者信息 |
 | 2026-08-08 22:59 | **英文 v5 人味化润色（10 段，用户批准，中文版待过目后同步）**：通读全部 121 段后判定 80+ 段已是自然人学术体刻意不动，只改 10 处真 AI 腔——摘要（"Three things make..." 清单腔/"interestingly"/"honestly delimits"）、¶7（"This is why" 教科书腔）、¶15（双逗号插入语）、¶19（Still/seldom 重复）、¶45（retrospectively justifies 拗口）、¶50（"are worth noting" 典型 AI 套话→"stand out"）、**¶55（"would not survive a careful reviewer" 元话语——在审稿人面前谈审稿，防御感，改对证据陈述）**、¶57（节奏）、¶71（被动改主动）、¶86（honestly 修饰）。scripts/apply_v5_polish.py 整段替换前逐字符断言 + 含数字 token 多重集/引用零漂移校验（抓到 ¶57 破折号粘连 token 一例已修正）。复跑审计 20P/0F/1W/5M 不变、摘要词数仍合规、排版仍 10 页。逐段对照清单 paper/polish-v5-diff.md（改前/改后/理由）待用户过目 → 过目后同步中文版并重建 |
 | 2026-08-08 22:44 | **JRTIP 格式合规体检（scripts/audit_jrtip_format.py，26 项机查）+ 3 处修复**：终审 20 PASS / 0 FAIL / 1 WARN / 4 MANUAL（真用户项：作者行/Funding/Author Contributions 占位 + bio）。修复（apply_v5_compliance_fix.py 全中 3/3）：①声明节标签 Conflicts of Interest→**Competing Interests**（指南规定标签名）②[2] Peden 2018 补 DOI 10.1016/j.applanim.2018.03.003（SRUC 机构库核实）③**[18] Gu 2024 文章号勘误 109524→109512**（ScienceDirect 核实，确系笔误）并补 DOI 10.1016/j.compag.2024.109512——中英同步（build_paper_docx_zh_v5.py 改 2 条重建）。WARN=11 条无 DOI 均合规（arXiv/数据集/软件/INMATEH/CVPR）。已 PASS 项：摘要 211 词/关键词 6/标题十进制≤3 级/图表顺序引用/图题注尾无句号/33 条文献全被引（修审计脚本多引用组解析 bug，[1,2]型曾漏报）/AI-Assisted 声明/动物福利/无尾注/Online Resource 1×2/GitHub 链接/SI 头部/Cover Letter real-time×9。投稿包主稿已刷新；排版 PDF 重建仍 10 页 |
 | 2026-08-08 22:35 | **旧副本清理 + v5 落账补提交**：应用户要求删除 v4 及更早旧副本 10 件（git rm 9 件可追溯：英 v2/v3/v4/v4-partial/Supplementary_Material(v4)/中 v2/v3/v4/补充-v4；rm 1 件 v4-backup 系 gitignore 排除件）——paper/ 现存 docx 仅 5 件：投稿=JRTIP-paper-v5.docx + Supplementary_Material_v5.docx（投稿时转 ESM_1.pdf）+ cover-letter-jrtip.docx；导师=猪行为检测-中文成稿-v5.docx + 猪行为检测-补充材料-v5.docx。发现 08-07 v5 全套工作（中英 v5/补充 v5/报告#7/提标图/投稿包换 v5/ESM_1.pdf/9 个脚本）一直未提交，本次一并 add 落账（旧副本在 git 历史中仍可追溯） |
