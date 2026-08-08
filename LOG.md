@@ -18,6 +18,19 @@
 - 明日待办：……
 ```
 
+## 2026-08-08（深夜③：英文 v5 人味化润色 10 段）
+
+- 做了：
+  - **润色改写（scripts/apply_v5_polish.py，10/10 段成功）**：通读 121 段只改 10 处真 AI 腔（摘要清单腔/interestingly/honestly delimits、¶7 This is why、¶15 双逗号插入、¶19 Still/seldom、¶45 retrospectively justifies、¶50 are worth noting、**¶55 "would not survive a careful reviewer" 元话语**、¶57 节奏、¶71 被动、¶86 honestly）；其余 80+ 段判定已是自然学术体刻意不动
+  - **数字/引用冻结**：整段替换前逐字符断言原文 + 含数字 token 多重集 + Fig/Table/Section/[n] 引用零漂移校验（抓 ¶57 破折号粘连一例，已改句读规避）
+  - 复跑：审计 20P/0F/1W/5M 不变（摘要词数合规）、双栏排版仍 10 页、投稿包主稿已刷新
+  - **逐段对照清单产出 paper/polish-v5-diff.md**（改前/改后/理由，供用户过目）
+- 文件变更：新建 scripts/apply_v5_polish.py、paper/polish-v5-diff.md；修改 paper/JRTIP-paper-v5.docx、submission-package/manuscript/JRTIP-paper-v5.docx、paper/template/v5-jrtip-format.{docx,pdf}、STATE.md
+- 卡点：无
+- 用户侧剩余：通读 v5 四件 + **过目 polish-v5-diff.md**（认可后我同步中文版重建）→ 填作者信息 → 送导师 → 投稿
+
+---
+
 ## 2026-08-08（深夜②：JRTIP 格式合规体检 + 3 处修复）
 
 - 做了：
