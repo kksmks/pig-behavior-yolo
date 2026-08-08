@@ -18,6 +18,19 @@
 - 明日待办：……
 ```
 
+## 2026-08-08（深夜：旧副本清理 + v5 落账补提交）
+
+- 做了：
+  - **删除 v4 及更早旧副本 10 件**（应用户要求）：git rm 9 件（英 v2/v3/v4/v4-partial/Supplementary_Material(v4)/中 v2/v3/v4/补充-v4，git 历史可追溯）+ rm 1 件（v4-backup，本就 gitignore 排除）
+  - **发现并补救**：08-07 的 v5 全套工作一直未提交（中英 v5、补充 v5、审稿团报告#7、提标图 4 张、投稿包换 v5、ESM_1.pdf、9 个脚本、revision-plan）——本次一并 add 落账
+  - **明确分工**（见下"用户侧剩余"）：投稿三件 vs 导师两件
+- 文件变更：删 10 旧 docx；新增 v5 全套入 git；STATE.md 更新记录
+- 卡点：无
+- 用户侧剩余（不变）：通读 v5 四件 → 填作者/单位/邮箱/ORCID + Funding + Author Contributions → 送导师 → 投稿
+- **分工速查**：投稿=paper/JRTIP-paper-v5.docx + Supplementary_Material_v5.docx（或 submission-package/ 整套，含 ESM_1.pdf 与单图）；导师=paper/猪行为检测-中文成稿-v5.docx + 猪行为检测-补充材料-v5.docx
+
+---
+
 ## 2026-08-08（页数实测销账：v5 = 10/12 页）
 
 - 做了：

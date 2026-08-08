@@ -367,3 +367,43 @@
 4. ❌ 检测效果对比图（R2-3）
 5. 🟡 Dataset Card 补场景描述（R3-4）
 6. 🟡 模块选型分析独立成节（R1-2）
+
+---
+
+# 评审报告 #7：v5 改动段落专项复审（文献补强 + 三种子基线新口径）（2026-08-07）
+
+对象：paper/JRTIP-paper-v5.docx 相对 v4 的全部改动（2.1/2.2/2.3 末段、Discussion 对比段、4.4 指引句、关键词 8→6、参考文献 [27]–[33]、摘要/Table 3 脚注/4.5 节三种子基线口径）+ Supplementary_Material_v5.docx（S1 补格、Table S2）
+
+## R1（严苛）意见
+
+1. **【已当场修复】摘要 "statistically indistinguishable" 过度声明**：n=3 对 n=3 的 t 检验不显著 ≠ 等效（未做 TOST 等效检验，且三种子检验功效有限）。旧措辞暗示等效性，D8 违规。已改 "statistically comparable"（与 4.5 节判决措辞一致）。状态：✅ 已修
+2. **【已当场修复】2.1 未核实缺失性声明**：原句 "Neither reports per-class accuracy on rare behaviors, and both evaluate on random frame splits" 对 PBR-YOLO 无法确证（Elsevier 全文不可得，仅摘要可核）。本轮核实结果：Rahman [28] 全文确认图像级随机切分（其原文自认 "within-facility performance rather than fully independent generalization"）✅；PBR-YOLO 仅摘要级证据。已改写为可核实口径：随机切分声明只挂 Rahman（并借用其自认措辞），缺失性声明加 "to our knowledge" 对冲。状态：✅ 已修（残余风险：PBR-YOLO 全文中若恰有每类 AP 表，"to our knowledge" 仍成立但偏弱——接受）
+3. **【已当场修复】Discussion n=2 因果过强**："our two failed integrations (M1, M2) show that these gains do not transfer"——两次失败归纳不出普遍结论。已改 "suggest that these gains may not transfer"，同句 "attention-augmented ... with attention-augmented" 冗余一并消除。状态：✅ 已修
+4. **【已当场修复】Table S2 口径陷阱**：S2 总人行 baseline 0.596 是单次值（seed 0），而 4.5 节新口径基线均值 0.6060——审稿人对照会误判矛盾。caption 已补 "All entries are single-run values (seed 0); the three-seed means ... are reported in Section 4.5"。状态：✅ 已修
+5. **4.5 节新统计口径本身复核通过**：SE_diff=√(0.0084²/3+0.0086²/3)=0.0069，t=0.0156/0.0069≈2.25，df=4，双侧 p≈0.088——"about two standard errors / p ≈ 0.09 / not significant at 0.05" 数字全部准确；"not significant" 措辞未越界为等效声明。M4 −0.007 在基线 1σ（0.0084）内 ✓。seed 0 复现 0.5964 句是好证据。状态：✅
+6. **【备答预案】n=3 功效质疑**：审稿人可能指出三种子检验功效低。答信口径：差异方向与量级（≤0.016）本身小于文献公认的 run-to-run 波动，且我方未主张 superiority 仅主张 comparability；更多种子受算力预算限制。状态：🟡 备答信素材，不改正文
+7. **2.3 "which these works do not discuss"（[31][32] 未论及 identity-preserving 权重迁移）**：摘要级核实，JRTIP 双栏全文未逐段核对。缺失性声明 + 本刊文献，被证伪概率低但存在。状态：🟡 接受残余风险（投稿前若有余力可全文扫一遍 [31][32]）
+
+## R2（宽松）意见
+
+1. Discussion 对比段把 M1/M2 失败转化为方法论论据（attention 增益在预训练管线上不迁移 → identity-preserving 的必要性），叙事闭环漂亮，应用派读者买账。状态：✅
+2. 2.3 主动承认 FasterNet 替换不新、立意转向 "condition under which it preserves accuracy"——对 R1 型审稿人的最佳防守，比被点名后再辩解主动得多。状态：✅
+3. Table S2 回应了"随机切分下测试集是否也呈弱类模式"的自然疑问；S2 caption 的协议复核声明（0.5933 vs 云端 0.5932）是可复现性加分项。状态：✅
+4. 关键词 8→6 符合 Springer 惯例（4–6 个），去掉的 general 词（deep learning 类）检索价值低。状态：✅
+5. 建议（不阻塞）：[27][28] 两篇 2025–2026 文献把 related work 时效性拉到投稿当年，cover letter 可在 "timeliness" 上顺带一句。状态：🟡 投稿前可选
+
+## R3（平和）意见
+
+1. Rahman 产房哺乳监测 + Luo 仔猪剪枝蒸馏两条引用把文献链从育肥栏延伸到产房/仔猪场景，PLF 覆盖面更完整；且 [33] 与我方"训练时改造"正交，畜牧读者能看到完整轻量化路线图。状态：✅
+2. 【重要领域核查】[33] Luo（Animals 2025）与 [27] PBR-YOLO 同课题组、同 8 行为数据集体系；[33] 全文确认其用**数据增强做类平衡**——我方差异化声明均限定在 [27][28] 范围内、未波及 [33]，无冲突。但若审稿人熟悉该课题组，可能在答信中要求与 [33] 的平衡增强路线比较——备答素材：增强平衡（改像素）vs 我方 capped oversampling（改曝光频次）+ sqrt 阻尼，可叠加。状态：🟡 备答信素材
+3. D8 扫描新增段落：无 significant（统计语境 "not significant at the 0.05 level" 为术语合规）、无 novel/SOTA/first/dramatically；"instructive""interestingly" 可接受。状态：✅
+4. 摘要三种子口径（0.590 ± 0.009 vs 0.606 ± 0.008）数字并列呈现，读者可自行判断差距——诚实呈现风格一致。状态：✅
+
+## 汇总：v5 复审清单
+
+| 级 | 问题 | 状态 |
+|---|---|---|
+| ✅ 本轮修复 | 摘要 indistinguishable→comparable；2.1 缺失性声明改写为可核实口径；Discussion n=2 因果软化+冗余消除；S2 caption 补 single-run 口径（scripts/apply_v5_review7.py，4 处全中） | 完成 |
+| 🟡 备答信素材 | n=3 检验功效质疑的答信口径；[33] 同课题组平衡增强路线的比较口径 | 投稿备用 |
+| 🟡 接受风险 | PBR-YOLO 全文不可得（缺失性声明已加 to our knowledge）；[31][32] 全文未逐段扫 | 已对冲 |
+| 🔴 不变 | 报告 #6 残余项照旧：排版实测页数 ≤12、作者/单位/bio 占位 | 待用户 |
