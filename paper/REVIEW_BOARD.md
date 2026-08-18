@@ -91,6 +91,25 @@
 
 
 
+# 评审报告 #8-补：残余项清零记录（2026-08-18）
+
+1. **[31][32] 缺失性声明核实（报告 #7 遗留尾巴）**：Springer 正文付费墙，经 Semantic Scholar TLDR +
+   摘要级双重核实——[31]（水下 YOLOv8+FasterNet）贡献为主干替换+BiFPN 改造；[32]（YOLO-FGD，PCB）
+   贡献为主干替换+GD 机制；两者均未论及预训练权重迁移/恒等保持集成。2.3 节声明 "which these works
+   do not discuss" 成立，残余风险与报告 #7 判决一致（极低，接受）。状态：✅ 销账
+2. **R2-Minor 两处一句话已入正文**：3.1 标注协议出处（"Behavior definitions and the annotation
+   protocol follow the original acquisition study [20]"，中英同步）；讨论章告警路径（帧级标签→栏级
+   统计→阈值告警一句，中英同步）。状态：✅ 已修
+3. **Reviewer-1 实时性两项已入正文**：延迟三段分解 + 持续运行稳定性（12,000 次/10.7 min/20.0 FPS/
+   p99 51.3 ms/零节流）+ 轨级功耗双口径（7 W 总输入 / 5 W 计算轨），中英部署章同步，页数复测
+   仍 10/12。状态：✅ 已修
+
+**至此报告 #8 清单中助手可办项全部清零；剩余均为用户项（作者信息、iThenticate、投稿提交）。**
+
+---
+
+# 评审报告 #6：v4 定稿终审（投稿前最后一轮）（2026-08-05）
+
 对象：paper/JRTIP-paper-v4.docx（8 图 7 表 + 补充材料 Table S1，122 段，约 6.4k 词）+ paper/Supplementary_Material.docx
 
 ## R1（严苛）意见
