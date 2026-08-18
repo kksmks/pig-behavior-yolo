@@ -10,7 +10,7 @@ data/dataset/
 data/comportamentos/
 data/ext-eval/
 data/tmp/
-results/
+results/*
 runs/
 *.pt
 *.onnx
@@ -34,3 +34,12 @@ paper/*-backup.docx
 # OS
 .DS_Store
 Thumbs.db
+
+# ---- 投稿开放材料（评审报告#8）：训练日志/指标/双权重入库，其余 results 仍忽略 ----
+results/*
+!results/*/
+results/*/*
+!results/EXPERIMENT_LOG.md
+!results/m5-best.pt
+!results/baseline-e200-best.pt
+!results/*/metrics.json

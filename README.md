@@ -2,11 +2,11 @@
 
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![Ultralytics](https://img.shields.io/badge/ultralytics-8.4.105-green)](https://github.com/ultralytics/ultralytics)
-[![License](https://img.shields.io/badge/license-CC%20BY%204.0-orange)](https://creativecommons.org/licenses/by/4.0/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 > **Paper**: *Real-Time Multi-Behavior Detection of Group-Housed Pigs on Edge Devices: Class-Imbalance-Aware Sampling and a Lightweight FasterNet Backbone*  
 > **Target Journal**: Journal of Real-Time Image Processing (JRTIP), Springer  
-> **Status**: Manuscript v4 in preparation (figure/table compression for JRTIP page limit). Temporal smoothing evaluated and **rejected** on the sparse-frame benchmark (2026-08-05, see EXPERIMENT_LOG).
+> **Status**: Manuscript v5 — submission-ready for JRTIP (10/12 pages measured in the official Word template). Temporal smoothing evaluated and **rejected** on the sparse-frame benchmark (2026-08-05, see EXPERIMENT_LOG).
 
 ---
 
@@ -18,9 +18,10 @@ This repository contains the code, data preparation scripts, and deployment pipe
 2. **Server-only evaluation**: Most prior works benchmark on high-end GPUs; edge viability is undocumented.
 3. **Over-optimistic generalization**: Random-frame splits inflate accuracy; cross-farm performance is rarely measured.
 
-**Key Results** (YOLOv11n baseline → our framework):
-- Rare-class `active` AP50: **52.6% → 63.9%** (+11.3 points)
-- Overall test mAP50: statistically comparable (59.6% → 59.3%, within 1σ)
+**Key Results** (YOLOv11n baseline → our framework, three seeds each):
+- Rare-class `active` AP50: **52.6% → 63.9%** (+11.3 points, test set)
+- Overall test mAP50: statistically comparable (baseline 0.606 ± 0.008 vs. M5 0.590 ± 0.009; t-test p ≈ 0.09)
+- Validation recall: **+2.1 points** with sampling (M4)
 - Parameters: **−4.4%** (2.58M → 2.47M)
 - Jetson Nano deployment: **19.7 FPS** @ 640×640, **33.3 FPS** @ 480×480 (~5 W)
 
@@ -149,7 +150,7 @@ python scripts/export_deploy.py --weights best.onnx --format engine --half
 | **M5** | **FasterNet + sampling (final)** | 0.593 | **2.47M** | **117.6** |
 | M6 | YOLOv12n + sampling (negative) | 0.599 | 2.56M | 78.4 |
 
-Full ablation and comparison tables are in the paper (`paper/JRTIP-paper-v3.docx`).
+Full ablation and comparison tables are in the paper (`paper/JRTIP-paper-v5.docx`; supplementary: `paper/Supplementary_Material_v5.docx`). Training logs and per-run `metrics.json` for all experiments are under `results/` (see `results/EXPERIMENT_LOG.md` for the master record).
 
 ---
 
@@ -176,6 +177,14 @@ This delimits where the framework works (same-farm deployment today) and where i
 ## Citation
 
 ```bibtex
+@misc{pig-behavior-yolo-manuscript,
+  title = {Real-Time Multi-Behavior Detection of Group-Housed Pigs on Edge Devices:
+           Class-Imbalance-Aware Sampling and a Lightweight FasterNet Backbone},
+  author = {[authors to be added upon publication]},
+  year = {2026},
+  note = {Manuscript under review at the Journal of Real-Time Image Processing (Springer)}
+}
+
 @dataset{pig-behavior-roboflow,
   title = {Pig Behavior Dataset},
   publisher = {Roboflow Universe},

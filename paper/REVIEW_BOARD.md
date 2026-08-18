@@ -23,7 +23,73 @@
 
 ---
 
-# 评审报告 #6：v4 定稿终审（投稿前最后一轮）（2026-08-05）
+# 评审报告 #8：JRTIP 投稿仿真预审（2026-08-18）
+
+对象：paper/JRTIP-paper-v5.docx + Supplementary_Material_v5.docx + cover-letter-jrtip.docx + GitHub 仓库
+方法：完全模拟 JRTIP 收稿后真实流程（编辑办公室技术审查 → 编辑初筛 → 双审稿人评议 → 仓库核查），不复读报告 #1–#7 已结项内容
+
+## Stage 1 编辑办公室技术审查（投稿后 24–72h 的第一道关）
+
+| 检查项 | 结果 |
+|---|---|
+| 页数 ≤12（双栏含 bio） | ✅ 10 页（官方 Word 模板实测，08-08；bio 加入后余量仍足） |
+| 摘要 ≤250 词 / 关键词 4–6 个 | ✅ 211 词 / 6 个 |
+| 图表按序引用、图题 Springer 式、分辨率 | ✅ 8 图 7 表全引全唯一；提标后 771–907 dpi（Fig.8 已定单栏排版） |
+| 参考文献数字制、全部被引、DOI 合规 | ✅ 33 条全被引；[2][18] DOI 已补；无 DOI 者均符合 "if available" 条款 |
+| 声明节规定标签 | ✅ Competing Interests / AI-Assisted / 伦理 / 数据可用性 |
+| 作者信息、ORCID、bio、Funding、Author Contributions | ❌ **全部占位——技术审查最常见的退补原因，必须最先填** |
+| iThenticate 查重 / AI 生成检测 | ⚠️ 未自查。本文原创写作+自有实验，风险低，但建议投稿前用学校渠道自查一次留档 |
+
+## Stage 2 编辑初筛（scope fit）
+
+- **real-time 契合**：上板实测延迟/FPS/功耗齐备，是全文最贴刊的部分；Cover Letter 的 real-time 论述已备 ✅
+- **与 WFE-YOLO（同赛道）的区分**：采样思路同源，但恒等保持集成、两级泛化、时序阴性结果构成独立叙事 ✅
+- **潜在编辑疑虑**：应用型稿件，编辑可能看"系统闭环演示"——依赖仓库与补充材料支撑（见 Stage 4）
+
+## Stage 3 双审稿人模拟（新视角）
+
+**Reviewer 1（实时系统/嵌入式视觉方向）——预计 Major Revision：**
+1. **延迟三段分解缺失**（preprocess/inference/postprocess 分开计时）：JRTIP 审稿人对实时性的常规要求，
+   目前只有端到端总延迟。→ 建议 Nano 上电补测一次（trtexec 或手动分段计时），半天工作量
+2. **持续运行稳定性未测**：FPS 为短时均值；Nano 满载热节流会降频，≥10 min 持续推理曲线是加分项
+   （可与①同次上电完成）
+3. 视频流端到端吞吐（取流-解码-检测-NMS 全链路）未评估——可作为 future work，备答信口径即可
+
+**Reviewer 2（畜牧行为/PLF 方向）——预计 Minor Revision：**
+1. 标注质量仅"随机目检"：公开数据集给不了标注者间一致性，建议在 3.1 补一句标注协议出处
+   （Bergamini [20] 原始采集与标注协议，S1 定义表已引用同源）——一句话即可补
+2. 行为时长统计（behavior budget）应用演示缺失：检测→管理指标的升华，可留 future work，备答信
+3. 福利告警落地路径（阈值/告警逻辑）未讨论：讨论章一句话可补，非阻塞
+
+**两人共同关注点**（#7 已备答，无需改正文）：n=3 检验功效；[31][32] 缺失性声明的全文核实；
+[33] 同课题组平衡增强路线的比较口径
+
+## Stage 4 GitHub 仓库核查（审稿人真的会点链接，本次新发现）
+
+| 级 | 问题 | 说明 |
+|---|---|---|
+| 🔴 | **results/ 目录零追踪（0 文件入库）** | Data Availability 声称"训练日志在仓库"，但 metrics.json、EXPERIMENT_LOG、权重全部未入库——声明与实物不符，R1 型审稿人一查即穿帮。需补：全套 metrics.json + EXPERIMENT_LOG.md + 双权重（m5-best.pt 5.2MB + baseline-e200-best.pt 5.5MB，共 ~11MB，GitHub 直传可承受） |
+| 🔴 | **README 三处过时** | ①Status 仍写 "Manuscript v4 in preparation"（实际 v5 投稿就绪）②模型变体表指向 `paper/JRTIP-paper-v3.docx`（v3 已删除，现为 v5）③Key Results 旧口径 "59.6% → 59.3%, within 1σ"（v5 新口径：三种子基线 0.606±0.008 vs M5 0.590±0.009，p≈0.09） |
+| 🟡 | LICENSE 占位与 badge 不一致 | LICENSE 文件为 MIT 但 [Year] [Your Name] 未填；README badge 写 CC BY 4.0 与文件 MIT 冲突。建议：代码 MIT（填年份/姓名）、数据 CC BY 4.0，badge 改 MIT 或双 badge |
+| 🟡 | 缺"论文在审"引用条目 | Citation 节只有数据集 bibtex，应加一条 manuscript under review 的引用方式 |
+
+## 汇总：投稿前还需补的清单（按办理人分组）
+
+| 谁办 | 事项 | 优先级 |
+|---|---|---|
+| **用户** | 作者/单位/ORCID/bio 填写；Funding 与 Author Contributions 两句；导师通讯署名确认；投稿系统注册提交 | 🔴 最先办 |
+| **助手（待确认后执行）** | 仓库补 results（metrics+日志+双权重）、README 三处刷新、LICENSE 填写+badge 统一、Citation 补在审条目——一次 commit+push 完成 | 🔴 高 |
+| **用户+助手（Nano 上电一次）** | 延迟三段分解 + ≥10 min 热节流持续推理 | 🟡 强烈建议（Reviewer 1 必杀点） |
+| **用户** | iThenticate/AI 检测自查（学校图书馆或免费渠道）；[31][32] 全文扫读确认缺失性声明 | 🟡 投稿前 |
+| **助手** | 3.1 补标注协议出处一句；讨论章补告警路径一句 | 🟢 小修顺手办 |
+| **备答信素材（不改正文）** | n=3 功效、[33] 比较、视频流端到端、行为时长统计 | 存档备用 |
+
+**总体判决（模拟编辑）**：当前包 = **技术审查待补作者信息后可送审；预计审稿结果 Major Revision（补实时性分解）**。
+稿件本身无新伤——所有遗留问题都在"工程补强与行政填写"层面，不在科学与叙事层面。
+
+---
+
+
 
 对象：paper/JRTIP-paper-v4.docx（8 图 7 表 + 补充材料 Table S1，122 段，约 6.4k 词）+ paper/Supplementary_Material.docx
 
