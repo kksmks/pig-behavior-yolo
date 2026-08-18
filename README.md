@@ -23,7 +23,8 @@ This repository contains the code, data preparation scripts, and deployment pipe
 - Overall test mAP50: statistically comparable (baseline 0.606 ± 0.008 vs. M5 0.590 ± 0.009; t-test p ≈ 0.09)
 - Validation recall: **+2.1 points** with sampling (M4)
 - Parameters: **−4.4%** (2.58M → 2.47M)
-- Jetson Nano deployment: **19.7 FPS** @ 640×640, **33.3 FPS** @ 480×480 (~5 W)
+- Jetson Nano deployment: **19.7 FPS** @ 640×640, **33.3 FPS** @ 480×480 (≈7 W total input under sustained load; ≈5 W across the GPU+CPU rails)
+- Sustained operation: **20.0 FPS over 12,000 consecutive inferences (10.7 min)**, p99 latency 51.3 ms, GPU peak 55.5 °C, zero thermal-throttling events
 
 ---
 

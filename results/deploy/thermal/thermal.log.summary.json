@@ -1,0 +1,9 @@
+{
+ "samples": 790,
+ "gpu_temp_first": 30.5,
+ "gpu_temp_last": 43.0,
+ "gpu_temp_max": 55.5,
+ "cpu_temp_max": 59.5,
+ "vin_mw_mean": null,
+ "vin_mw_max": null
+}

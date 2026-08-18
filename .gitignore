@@ -43,3 +43,4 @@ results/*/*
 !results/m5-best.pt
 !results/baseline-e200-best.pt
 !results/*/metrics.json
+!results/deploy/thermal/
