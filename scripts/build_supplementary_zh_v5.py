@@ -76,8 +76,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 FIGS = [
     ('results/analysis/figS1-pr-curves.png',
-     '图 S1 独立测试集上的精确率-召回率（PR）曲线：基线（左）与最终轻量模型 M5（右）。'
-     '细线为各行为类别曲线，粗蓝线为全类平均（图例内为 mAP50）'),
+     '图 S1 独立测试集上的精确率-召回率（PR）曲线（四个消融模型）：(a) 基线 YOLOv11n（mAP50 0.596）、'
+     '(b) M3 仅 FasterNet（0.569）、(c) M4 仅采样（0.604）、(d) 最终 M5（0.593）。'
+     '细线为各行为类别曲线，粗蓝线为全类平均'),
     ('results/analysis/figS2-latency-breakdown.png',
      '图 S2 Jetson Nano 延迟预算。(a) 引擎侧分解（TensorRT 实测）：两种输入尺寸下 GPU 计算均占绝对主导，'
      'H2D/D2H 传输可忽略。(b) 纯 Python 管线的 CPU 侧前/后处理开销（对数轴）：朴素的解码与缩放'

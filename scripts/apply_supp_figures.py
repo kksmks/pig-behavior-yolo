@@ -10,9 +10,10 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 PATH = 'paper/Supplementary_Material_v5.docx'
 FIGS = [
     ('results/analysis/figS1-pr-curves.png',
-     'Fig. S1 Precision–recall curves on the held-out test set for the baseline (left) and the '
-     'final lightweight model M5 (right). Behaviour-class curves are shown thin; the thick blue '
-     'curve is the all-class average (mAP50 in the legend)'),
+     'Fig. S1 Precision–recall curves on the held-out test set for the four ablation models: '
+     '(a) baseline YOLOv11n (mAP50 0.596), (b) M3 FasterNet-only (0.569), (c) M4 sampling-only '
+     '(0.604), (d) final M5 (0.593). Behaviour-class curves are shown thin; the thick blue curve '
+     'is the all-class average'),
     ('results/analysis/figS2-latency-breakdown.png',
      'Fig. S2 Latency budget on the Jetson Nano. (a) Engine-side decomposition (TensorRT '
      'measurement): GPU compute dominates at both input sizes; H2D/D2H transfers are negligible. '

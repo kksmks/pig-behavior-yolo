@@ -44,6 +44,8 @@ y.write_text(
 
 MODELS = {
     'baseline': 'results/baseline-e200-best.pt',
+    'm3': 'results/m3-fasternet-plus/weights/best.pt',
+    'm4': 'results/m4-wsample/weights/best.pt',
     'm5': 'results/m5-best.pt',
 }
 outdir = Path('results/analysis/prcurves'); outdir.mkdir(parents=True, exist_ok=True)

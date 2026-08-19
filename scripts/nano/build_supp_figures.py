@@ -10,7 +10,7 @@ from pathlib import Path
 OUT = Path('results/analysis')
 plt.rcParams.update({'font.family': 'sans-serif', 'font.size': 10,
                      'axes.spines.top': False, 'axes.spines.right': False,
-                     'figure.dpi': 300, 'savefig.bbox': 'tight'})
+                     'figure.dpi': 600, 'savefig.bbox': 'tight'})
 
 # ---------- figS2: (a) 引擎侧堆叠条 (b) CPU 侧耗时 ----------
 eng = [  # (label, H2D, GPU, D2H, fps)
@@ -34,7 +34,7 @@ ax1.set_xlabel('Latency (ms)')
 ax1.set_xlim(0, 62)
 ax1.legend(fontsize=7.5, frameon=False, ncol=3, loc='lower center',
            bbox_to_anchor=(0.5, 1.02), handlelength=1.2, columnspacing=0.9)
-ax1.set_title('(a) Engine-side breakdown (TensorRT)', fontsize=9.5, pad=22)
+ax1.set_title('(a)', fontsize=10, pad=22)
 ax1.grid(axis='x', ls=':', alpha=0.4, zorder=0)
 
 cpu_items = [  # (label, ms, color)
@@ -54,7 +54,7 @@ ax2.set_yticklabels([lab for lab, _, _ in cpu_items], fontsize=8)
 ax2.set_xscale('log')
 ax2.set_xlim(0.3, 250)
 ax2.set_xlabel('CPU-side cost (ms, log)')
-ax2.set_title('(b) CPU-side pre/post cost (Python)', fontsize=9.5, pad=22)
+ax2.set_title('(b)', fontsize=10, pad=22)
 ax2.grid(axis='x', ls=':', alpha=0.4, zorder=0)
 fig.savefig(OUT / 'figS2-latency-breakdown.png')
 plt.close(fig)
@@ -88,8 +88,6 @@ ax2.tick_params(axis='y', colors='#4C72B0')
 h1, l1 = ax.get_legend_handles_labels()
 h2, l2 = ax2.get_legend_handles_labels()
 ax.legend(h1 + h2, l1 + l2, fontsize=8, frameon=False, loc='lower center', ncol=3)
-ax.set_title('Sustained throughput 20.0 FPS (p99 latency 51.3 ms); zero throttling events, no clock drop',
-             fontsize=9)
 ax.grid(ls=':', alpha=0.4)
 fig.savefig(OUT / 'figS3-thermal-timeline.png')
 plt.close(fig)
