@@ -151,7 +151,7 @@ python scripts/export_deploy.py --weights best.onnx --format engine --half
 | **M5** | **FasterNet + sampling (final)** | 0.593 | **2.47M** | **117.6** |
 | M6 | YOLOv12n + sampling (negative) | 0.599 | 2.56M | 78.4 |
 
-Full ablation and comparison tables are in the paper (`paper/JRTIP-paper-v5.docx`; supplementary: `paper/Supplementary_Material_v5.docx`). Training logs and per-run `metrics.json` for all experiments are under `results/` (see `results/EXPERIMENT_LOG.md` for the master record).
+Full ablation and comparison tables are in the paper (`paper/JRTIP-paper-v5.docx`; supplementary: `paper/Supplementary_Material_v5.docx`). Training logs and per-run `metrics.json` for all experiments are under `results/` (see `results/EXPERIMENT_LOG.md` for the master record). Files named `draft-v*` under `paper/` are superseded working drafts kept for traceability—the v5 manuscript is the authoritative version.
 
 ---
 

@@ -145,7 +145,7 @@ ax.add_patch(plt.Rectangle((0.29, 0.06), 0.42, 0.30, fc='#fdf3f3', ec='#C44E52',
                            transform=ax.transAxes, zorder=2))
 ax.text(0.50, 0.21, 'Measured (sustained, batch 1):\n'
                     '640×640: 50.2 ms = 19.7 FPS   |   480×480: 30.0 ms = 33.3 FPS\n'
-                    'total board power ≈ 5 W; INT8 unavailable on Maxwell (calibration fails)',
+                    'board input ≈ 7 W sustained (≈5 W GPU+CPU rails); no INT8 on Maxwell',
         transform=ax.transAxes, ha='center', va='center', fontsize=8.2, color='#7a2222')
 ax.annotate('', xy=(0.89, 0.51), xytext=(0.50, 0.37), xycoords='axes fraction',
             arrowprops=dict(arrowstyle='-|>', color='#C44E52', lw=1.1, ls='--'))
