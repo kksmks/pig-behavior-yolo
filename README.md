@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![Ultralytics](https://img.shields.io/badge/ultralytics-8.4.105-green)](https://github.com/ultralytics/ultralytics)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22016701.svg)](https://doi.org/10.5281/zenodo.22016701)
 
 > **Paper**: *Real-Time Multi-Behavior Detection of Group-Housed Pigs on Edge Devices: Class-Imbalance-Aware Sampling and a Lightweight FasterNet Backbone*  
 > **Target Journal**: Journal of Real-Time Image Processing (JRTIP), Springer  
