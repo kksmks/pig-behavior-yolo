@@ -69,6 +69,30 @@ for i, row in enumerate(rows2):
     for j, v in enumerate(row):
         t2.rows[i + 1].cells[j].text = v
 
+# ===== 图 S1–S3（2026-08-18 新增：PR 曲线 / 延迟分解 / 持续运行时序） =====
+from pathlib import Path
+from docx.shared import Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+FIGS = [
+    ('results/analysis/figS1-pr-curves.png',
+     '图 S1 独立测试集上的精确率-召回率（PR）曲线：基线（左）与最终轻量模型 M5（右）。'
+     '细线为各行为类别曲线，粗蓝线为全类平均（图例内为 mAP50）'),
+    ('results/analysis/figS2-latency-breakdown.png',
+     '图 S2 Jetson Nano 延迟预算。(a) 引擎侧分解（TensorRT 实测）：两种输入尺寸下 GPU 计算均占绝对主导，'
+     'H2D/D2H 传输可忽略。(b) 纯 Python 管线的 CPU 侧前/后处理开销（对数轴）：朴素的解码与缩放'
+     '可能超过 GPU 计算，生产管线应以 C 或 CUDA 实现前/后处理'),
+    ('results/analysis/figS3-thermal-timeline.png',
+     '图 S3 Jetson Nano 持续运行时序（M5 @640 FP16，连续 12,000 次推理、10.7 分钟）。'
+     '吞吐保持 20.0 FPS（第 99 百分位延迟 51.3 ms）；GPU 温度峰值 55.5 °C，全程零热节流、无降频'),
+]
+for path, caption in FIGS:
+    assert Path(path).exists(), f'缺图: {path}'
+    doc.add_picture(path, width=Inches(6.2))
+    cap = doc.add_paragraph(caption)
+    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cap.runs[0].font.size = Pt(9)
+
 out = 'paper/猪行为检测-补充材料-v5.docx'
 doc.save(out)
 print('已生成:', out)
