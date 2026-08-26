@@ -5,7 +5,8 @@ audit_jrtip_format.py — JRTIP 官方投稿指南合规体检（对 paper/JRTIP
 输出：逐项 PASS / FAIL / WARN / MANUAL（需人工或用户填写）。
 只读不改。
 """
-import re
+import re, sys
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 from pathlib import Path
 from docx import Document
 from docx.oxml.ns import qn

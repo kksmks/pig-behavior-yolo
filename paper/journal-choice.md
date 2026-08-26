@@ -3,7 +3,7 @@
 ## 最终定案（2026-08-03 晚更新）
 
 **目标刊：Journal of Real-Time Image Processing（Springer，SCIE Q2，IF 4.9，订阅制免费，~100 天审稿）**
-冲刺序：Ecological Informatics（SCIE Q1，免费订阅制）→ 不中转 JRTIP → 保底 INMATEH（ESCI，免费，数周）
+冲刺序：Ecological Informatics（SCIE Q1，免费订阅制）→ 不中转 JRTIP → 保底 INMATEH（ESCI，⚠️2026 已收费：700 欧元/篇+超 10 页每页 25 欧，加急 1200 欧，数周）
 目的：考研铺垫（SCIE 认可度优先）；中文版初稿用于找导师争取支持（paper/draft-v2-zh.md）
 
 ## 用户硬条件
@@ -14,7 +14,7 @@
 
 | 期刊 | 分区/收录 | 版面费 | 速度 | 备注 |
 |---|---|---|---|---|
-| **INMATEH Agricultural Engineering** | JCR Q4 / 中科院4区，ESCI+Scopus，非预警 | **≈0（无 APC）** | 快（数周） | **WFE-YOLO 就发在这**——我们工作的直接对标刊，题材完全对口 |
+| **INMATEH Agricultural Engineering** | JCR Q4 / 中科院4区，ESCI+Scopus，非预警 | **⚠️ 700 欧元/篇（约 5,500 元，另 VAT）+ 超 10 页每页 25 欧；加急 1200 欧**（2026-08-20 官网核实，早前"免费"记录已过时——WFE-YOLO 2026 年发表时收费状态不明） | 快（数周） | **WFE-YOLO 就发在这**——我们工作的直接对标刊，题材完全对口 |
 | **IJABE**（Int. J. Agricultural & Biological Engineering） | JCR **Q2** / 中科院3区，SCIE | 低（页面费，投稿前官网核） | **慢（约 24 周）** | 认可度更好，用时间换 |
 | AgriEngineering（MDPI） | JCR Q2（IF 3.1）/ 中科院3区 | **~1600 CHF（约 1.2–1.4 万元）** | **最快（一审 25.8 天，录用后 5.7 天上线）** | 均衡但贵，导师能报销才选 |
 | Sensors / Animals（MDPI） | Q2/Q1 | ~2600 CHF（~2 万元） | 快 | 贵，超本科预算，不推荐 |

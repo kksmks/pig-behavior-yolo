@@ -29,6 +29,6 @@ We hope the manuscript's combination of measured edge deployment, honest general
 
 Sincerely,
 
-[Author names]
-[Affiliations]
-[Corresponding author email]
+Zhan Zhang and Linlin Gou
+School of Biological Science and Technology, Liupanshui Normal University, Liupanshui 553000, China
+Zhan Zhang (corresponding author), e-mail: 851709772@qq.com
