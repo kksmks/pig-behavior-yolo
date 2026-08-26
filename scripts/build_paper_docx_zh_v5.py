@@ -50,9 +50,9 @@ def table(headers, rows, caption):
 
 # ===== 标题 =====
 doc.add_heading('面向边缘设备的群养猪多行为实时检测：类别不均衡感知采样与轻量化 FasterNet 主干', level=0)
-p('Zhan Zhang†*，Linlin Gou†', italic=False)
+p('张展†*，勾林林†', italic=False)
 p('† 共同一作（贡献相同）｜六盘水师范学院 生物科学与技术学院，贵州 六盘水 553000｜'
-  '*通讯作者：Zhan Zhang，邮箱：851709772@qq.com', italic=True)
+  '*通讯作者：张展，邮箱：851709772@qq.com', italic=True)
 
 # ===== 摘要 =====
 h('摘要', 1)
