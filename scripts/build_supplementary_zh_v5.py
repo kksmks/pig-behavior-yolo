@@ -12,7 +12,8 @@ doc.styles['Normal'].font.size = Pt(11)
 
 doc.add_heading('补充材料（在线资源 1 / Online Resource 1）', level=1)
 doc.add_paragraph('面向边缘设备的群养猪多行为实时检测：类别不均衡感知采样与轻量化 FasterNet 主干 —— 补充材料')
-doc.add_paragraph('Journal of Real-Time Image Processing · [作者姓名] · 通讯作者邮箱：[待填]')
+doc.add_paragraph('Journal of Real-Time Image Processing · 张展 · 勾林林 · '
+                        '通讯作者邮箱：851709772@qq.com')
 
 cap = doc.add_paragraph('表 S1 验证集分类别 AP50。独立测试集上的关键稀有类结果：'
                         'active 0.526→0.639（基线→M4，+11.3 点）；sitting 0.534→0.571；fight 0.840→0.871。')
