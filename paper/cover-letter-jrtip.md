@@ -5,7 +5,7 @@
 
 ---
 
-[Date]
+28 August 2026
 
 To the Editor-in-Chief
 Journal of Real-Time Image Processing
