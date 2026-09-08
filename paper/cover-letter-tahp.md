@@ -1,6 +1,6 @@
 # Cover Letter — Tropical Animal Health and Production
 
-28 August 2026
+8 September 2026
 
 To the Editor-in-Chief
 Tropical Animal Health and Production
